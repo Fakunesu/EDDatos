@@ -17,8 +17,8 @@ public class SimpleListTestCaller : MonoBehaviour
     {
         tMPro.text = TestSimpleList.list.ToString();
     }
-    void Update()
+   /* void Update()
     {
-        // tMPro.text=TestSimpleList.list.ToString();
-    }
+        tMPro.text=TestSimpleList.list.ToString();
+    }*/
 }

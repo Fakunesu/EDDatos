@@ -1,106 +1,100 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
-using static UnityEditor.Progress;
 
-public class SimpleList<T> : ISimpleList<T>
-{
-    public T[] array;
-
-    private int count;
-
-    public SimpleList()
+    public class SimpleList<T> : ISimpleList<T>
     {
-        array = new T[10];
-        count = 0;
-    }
+        public T[] array;
 
+        private int count;
 
-    public T this[int index]
-    {
-        get
+        public SimpleList()
         {
-            if (index < 0 || index >= count)
-                throw new System.IndexOutOfRangeException();
-            return array[index];
-
+            array = new T[10];
+            count = 0;
         }
-        set
-        {
-            if (index < 0 || index >= count)
-                throw new System.IndexOutOfRangeException();
-            array[index] = value;
-        }
-    }
 
-    public int Count => count;
 
-    public void Add(T item)
-    {
-        if (count >= array.Length)
+        public T this[int index]
         {
-            T[] newArray = new T[array.Length * 2];
-            for (int i = 0; i < array.Length; i++)
+            get
             {
-                newArray[i] = array[i];
+                if (index < 0 || index >= count)
+                    throw new System.IndexOutOfRangeException();
+                return array[index];
+
             }
-            array = newArray;
-        }
-
-        array[count] = item;
-        count++;
-    }
-
-    public void AddRange(T[] collection)
-    {
-        for (int i = 0; i <= collection.Length; i++)
-        {
-            Add(collection[i]);
-        }
-    }
-
-    public void Clear()
-    {
-        array = new T[10];
-        count = 0;
-    }
-
-    public bool Remove(T item)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            if (Equals(array[i], item))
+            set
             {
-             
-                for (int j = i; j < count - 1; j++)
+                if (index < 0 || index >= count)
+                    throw new System.IndexOutOfRangeException();
+                array[index] = value;
+            }
+        }
+
+        public int Count => count;
+
+        public void Add(T item)
+        {
+            if (count >= array.Length)
+            {
+                T[] newArray = new T[array.Length * 2];
+                for (int i = 0; i < array.Length; i++)
                 {
-                    array[j] = array[j + 1];
+                    newArray[i] = array[i];
                 }
-
-                count--;
-                array[count] = default;
-                return true;
+                array = newArray;
             }
+
+            array[count] = item;
+            count++;
         }
-        return false;
-    }
 
-    public override string ToString()
-    {
-        string resultado = "";
-
-        for (int i = 0; i < count; i++)
+        public void AddRange(T[] collection)
         {
-            resultado += array[i].ToString();
-
-            if (i < count - 1)
+            for (int i = 0; i <= collection.Length; i++)
             {
-                resultado += ", ";
+                Add(collection[i]);
             }
         }
 
-        return resultado;
+        public void Clear()
+        {
+            array = new T[10];
+            count = 0;
+        }
+
+        public bool Remove(T item)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (Equals(array[i], item))
+                {
+
+                    for (int j = i; j < count - 1; j++)
+                    {
+                        array[j] = array[j + 1];
+                    }
+
+                    count--;
+                    array[count] = default;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public override string ToString()
+        {
+            string resultado = "";
+
+            for (int i = 0; i < count; i++)
+            {
+                resultado += array[i].ToString();
+
+                if (i < count - 1)
+                {
+                    resultado += ", ";
+                }
+            }
+
+            return resultado;
+        }
     }
-}
