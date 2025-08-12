@@ -26,6 +26,13 @@ public class TestSimpleList : MonoBehaviour
         UpdateText();
     }
 
+    public void AddRangeElement()
+    {
+        string[] range = inputField.text.Split(','); 
+        list.AddRange(range);
+        UpdateText();
+    }
+
     public void ClearList()
     {
         list.Clear();

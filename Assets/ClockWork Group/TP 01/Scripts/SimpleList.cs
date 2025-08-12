@@ -52,7 +52,7 @@ public class SimpleList<T> : ISimpleList<T>
 
         public void AddRange(T[] collection)
         {
-            for (int i = 0; i <= collection.Length; i++)
+            for (int i = 0; i < collection.Length; i++)
             {
                 Add(collection[i]);
             }
