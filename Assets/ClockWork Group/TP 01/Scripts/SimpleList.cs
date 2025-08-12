@@ -1,5 +1,7 @@
+using UnityEngine;
+using System.Diagnostics;
 
-    public class SimpleList<T> : ISimpleList<T>
+public class SimpleList<T> : ISimpleList<T>
     {
         public T[] array;
 
@@ -33,7 +35,8 @@
 
         public void Add(T item)
         {
-            if (count >= array.Length)
+            UnityEngine.Debug.Log(item.ToString());
+            if (count == array.Length)
             {
                 T[] newArray = new T[array.Length * 2];
                 for (int i = 0; i < array.Length; i++)

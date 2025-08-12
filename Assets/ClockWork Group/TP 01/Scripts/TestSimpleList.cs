@@ -10,18 +10,19 @@ public class TestSimpleList : MonoBehaviour
     private TMP_Text textoLista;
     public SimpleList<string> list = new SimpleList<string>();
     private SimpleListTestCaller caller;
+    [SerializeField] private TMP_InputField inputField;
 
     public void AddElement()
     {
         //TODO: hacer que agregue lo que esta en el InputField
-        list.Add("Elemento " + list.Count);
+        list.Add(inputField.text);
         UpdateText();
     }
 
     public void RemoveElement()
     {
         //TODO: hacer que remueva lo que esta en el InputField
-        list.Remove("Elemento " + (list.Count - 1));
+        list.Remove(inputField.text);
         UpdateText();
     }
 
