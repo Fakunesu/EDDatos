@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Text
-  - Text2
   - TextController
+  - ArrayText
+  - UIText
+  - CountText
   layers:
   - Default
   - TransparentFX

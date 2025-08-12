@@ -8,8 +8,8 @@ using UnityEngine;
 public class TestSimpleList : MonoBehaviour
 {
     private TMP_Text textoLista;
+    private TMP_Text textoCount;
     public SimpleList<string> list = new SimpleList<string>();
-    private SimpleListTestCaller caller;
     [SerializeField] private TMP_InputField inputField;
 
     public void AddElement()
@@ -41,21 +41,20 @@ public class TestSimpleList : MonoBehaviour
 
     private void Start()
     {
-        //caller = GameObject.FindGameObjectWithTag("Text2").GetComponent<SimpleListTestCaller>();
-        textoLista = GameObject.FindGameObjectWithTag("Text2").GetComponent<TMP_Text>();
+        textoLista = GameObject.FindGameObjectWithTag("ArrayText").GetComponent<TMP_Text>();
+        textoCount = GameObject.FindGameObjectWithTag("CountText").GetComponent <TMP_Text>();
         list.array[2] = "holaa";
     }
 
     private void Update()
     {
-        
-        // caller.Hola();
-        // Debug.Log(caller);
+
     }
 
     private void UpdateText()
     {
         textoLista.text = list.ToString();
+        textoCount.text = list.Count.ToString();
     }
 }
 
