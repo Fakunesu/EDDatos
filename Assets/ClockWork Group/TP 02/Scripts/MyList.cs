@@ -71,9 +71,17 @@ public class MyList<T>
             Count = count;
         }
     }
+
+    public void AddRange(T[] collectionValues)
+    {
+        for (int i = 0; i <= collectionValues.Length; i++)
+        {
+            Add(collectionValues[i]);
+        }
+    }
     public bool IsEmpty()
     {
-        if(count == 0)
+        if (count == 0)
             return true;
         else return false;
     }
