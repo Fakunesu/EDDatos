@@ -1,6 +1,7 @@
 using MyLinkedList;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 public class MyList<T>
 {
@@ -72,11 +73,51 @@ public class MyList<T>
         }
     }
 
+    public void AddRange(MyList<T> ListValues)
+    {
+        if (ListValues.IsEmpty() == true)
+        {
+            return;
+        }
+        else if (IsEmpty() == true)
+        {
+            root = ListValues.root;
+            tail = ListValues.tail;
+            Count = ListValues.Count;
+        }
+        else
+        {
+            tail.Next = ListValues.root;
+            ListValues.root.Prev = tail;
+            tail = ListValues.tail;
+            Count += ListValues.Count;
+        }
+
+        ListValues.root = null;
+        ListValues.tail = null;
+        ListValues.count = 0;
+    }
+
     public void AddRange(T[] collectionValues)
     {
         for (int i = 0; i <= collectionValues.Length; i++)
         {
             Add(collectionValues[i]);
+        }
+    }
+
+    public bool Remove(T valueRemoved)
+    {
+        for (int i = 0; i <= Count; i++)
+        {
+            if (valueRemoved == true)
+            {
+                valueRemoved.Prev = valueRemoved.Next.Prev;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
     public bool IsEmpty()
