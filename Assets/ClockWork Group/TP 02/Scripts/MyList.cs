@@ -1,4 +1,5 @@
 using MyLinkedList;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -108,18 +109,98 @@ public class MyList<T>
 
     public bool Remove(T valueRemoved)
     {
-        for (int i = 0; i <= Count; i++)
+        if (IsEmpty() == false)
         {
-            if (valueRemoved == true)
+            return false;
+        }
+        MyNode<T> current = root;
+        while (current != null)
+        {
+            if (EqualityComparer<T>.Default.Equals(current.Value, valueRemoved))
             {
-                valueRemoved.Prev = valueRemoved.Next.Prev;
+                if (current == root)
+                {
+                    root = current.Next;
+                    if (root != null)
+                    {
+                        root.Prev = null;
+                    }
+                }
+                else if (current == tail)
+                {
+                    tail = current.Prev;
+                    if (tail != null)
+                    {
+                        tail.Next = null;
+                    }
+                }
+                else
+                {
+                    current.Prev.Next=current.Next;
+                    current.Next.Prev = current.Prev;
+                }
+
+                Count--;
+
+                return true;
+
+            }
+
+            current = current.Next;
+        }
+
+        return false;
+    }
+
+    public void RemoveAt(int index)
+    { 
+        if (index < 0 || index > Count)
+        {
+            throw new System.IndexOutOfRangeException();
+        }
+
+        if (index == 0)
+        {
+            root = root.Next;
+            if (root != null)
+            {
+                root.Prev = null;
             }
             else
             {
-                return false;
+                tail = null;
+            }
+
+        }
+        else if (index == Count)
+        {
+            tail = tail.Prev;
+            if (tail != null)
+            {
+                tail.Next = null;
+            }
+            else
+            {
+                root = null;
             }
         }
+        else
+        {
+            MyNode<T> current = root;
+            for (int i = 0; i < Count; i++)
+            {
+                current = current.Next;
+            }
+
+            current.Prev.Next=current.Next;
+            current.Next.Prev=current.Prev;
+        }
+
+        count--;
+
     }
+
+
     public bool IsEmpty()
     {
         if (count == 0)
