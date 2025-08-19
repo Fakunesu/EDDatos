@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 public class MyList<T>
 {
-    public int count=0;
+    public int count = 0;
     private MyNode<T> root;
     private MyNode<T> tail;
     public T value;
@@ -14,11 +14,11 @@ public class MyList<T>
     public MyNode<T> node;
     public MyList()
     {
-        
+
         this.root = null;
         this.tail = null;
         Count = count;
-        
+
     }
 
     public int Count { get; private set; }
@@ -29,8 +29,8 @@ public class MyList<T>
         {
             if (index < 0 || index >= count)
                 throw new System.IndexOutOfRangeException();
-            MyNode<T> actual=root;
-            for(int i = 0; i < index; i++)
+            MyNode<T> actual = root;
+            for (int i = 0; i < index; i++)
             {
                 actual = actual.Next;
             }
@@ -42,11 +42,11 @@ public class MyList<T>
             if (index < 0 || index >= count)
                 throw new System.IndexOutOfRangeException();
             MyNode<T> actual = root;
-            for(int i = 0;i < index; i++)
+            for (int i = 0; i < index; i++)
             {
                 actual = actual.Next;
             }
-            actual.Value = value;   
+            actual.Value = value;
         }
     }
 
@@ -54,7 +54,7 @@ public class MyList<T>
     {
         if (IsEmpty() == true)
         {
-            var newNode=new MyNode<T>(value);
+            var newNode = new MyNode<T>(value);
             root = newNode;
             tail = newNode;
             newNode.Prev = null;
@@ -62,7 +62,7 @@ public class MyList<T>
             count++;
             Count = count;
         }
-        else if(IsEmpty()==false)
+        else if (IsEmpty() == false)
         {
             var newNode = new MyNode<T>(value);
             newNode.Prev = tail;
@@ -84,24 +84,26 @@ public class MyList<T>
         {
             root = ListValues.root;
             tail = ListValues.tail;
-            Count = ListValues.Count;
+
         }
         else
         {
             tail.Next = ListValues.root;
             ListValues.root.Prev = tail;
             tail = ListValues.tail;
-            Count += ListValues.Count;
         }
 
+        count += ListValues.Count;
+        Count = count;
         ListValues.root = null;
         ListValues.tail = null;
         ListValues.count = 0;
+        ListValues.Count = ListValues.count;
     }
 
     public void AddRange(T[] collectionValues)
     {
-        for (int i = 0; i <= collectionValues.Length; i++)
+        for (int i = 0; i < collectionValues.Length; i++)
         {
             Add(collectionValues[i]);
         }
@@ -109,7 +111,7 @@ public class MyList<T>
 
     public bool Remove(T valueRemoved)
     {
-        if (IsEmpty() == false)
+        if (IsEmpty())
         {
             return false;
         }
@@ -136,12 +138,12 @@ public class MyList<T>
                 }
                 else
                 {
-                    current.Prev.Next=current.Next;
+                    current.Prev.Next = current.Next;
                     current.Next.Prev = current.Prev;
                 }
 
-                Count--;
-
+                count--;
+                Count = count;
                 return true;
 
             }
@@ -153,8 +155,8 @@ public class MyList<T>
     }
 
     public void RemoveAt(int index)
-    { 
-        if (index < 0 || index > Count)
+    {
+        if (index < 0 || index >= Count)
         {
             throw new System.IndexOutOfRangeException();
         }
@@ -172,7 +174,7 @@ public class MyList<T>
             }
 
         }
-        else if (index == Count)
+        else if (index == Count - 1)
         {
             tail = tail.Prev;
             if (tail != null)
@@ -187,16 +189,17 @@ public class MyList<T>
         else
         {
             MyNode<T> current = root;
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < index; i++)
             {
                 current = current.Next;
             }
 
-            current.Prev.Next=current.Next;
-            current.Next.Prev=current.Prev;
+            current.Prev.Next = current.Next;
+            current.Next.Prev = current.Prev;
         }
 
         count--;
+        Count = count;
 
     }
 
@@ -206,8 +209,8 @@ public class MyList<T>
         if (index < 0 || index > Count)
             throw new System.IndexOutOfRangeException();
 
-            MyNode<T> newNode = new MyNode<T>(value);
-        
+        MyNode<T> newNode = new MyNode<T>(value);
+
         if (index == 0)
         {
 
@@ -222,9 +225,7 @@ public class MyList<T>
                 newNode.Next = root;
                 newNode.Prev = null;
                 root = newNode;
-                count++;
-                Count = count;
-                
+
             }
         }
         else if (index == Count)
@@ -236,9 +237,9 @@ public class MyList<T>
         }
         else
         {
-            MyNode<T> current = new MyNode<T>(value);
-            newNode = root;
-            for (int i = 0; i < index; ++i) {
+            MyNode<T> current = root;
+            for (int i = 0; i < index; ++i)
+            {
                 current = current.Next;
             }
             newNode.Next = current;
@@ -254,5 +255,61 @@ public class MyList<T>
         if (count == 0)
             return true;
         else return false;
+    }
+
+    public void Clear()
+    {
+        MyNode<T> current = root;
+
+        while (current != null)
+        {
+
+            MyNode<T> next = current.Next;
+            current.Next = null;
+            current.Prev = null;
+            current = next;
+        }
+
+        /*  for (int i = 0; i <= Count; ++i) 
+          {
+              current = current.Next;
+              current.Prev = null;
+              if (i == Count)
+              {
+                  current = null;
+              }
+          }*/
+        root = null;
+        tail = null;
+        count = 0;
+        Count = count;
+    }
+
+    public override string ToString()
+    {
+        if (IsEmpty())
+        {
+            return "[Vacio]";
+        }
+        else
+        {
+            MyNode<T> current = root;
+            string result = "[";
+
+            while (current != null)
+            {
+                result += current.Value.ToString();
+
+                if (current.Next != null)
+                {
+                    result += ", ";
+                }
+                current = current.Next;
+            }
+
+            result += "]";
+
+            return result;
+        }
     }
 }
