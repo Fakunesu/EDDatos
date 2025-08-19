@@ -200,7 +200,37 @@ public class MyList<T>
 
     }
 
+    public void insert(int index, T value)
+    {
+        
+        if (index < 0 || index > Count){
+            throw new System.IndexOutOfRangeException();
+        }
 
+        else if (index == 0)
+        {
+            MyNode<T> newNode = new MyNode<T>(value);
+            root.Prev = newNode;
+            newNode.Next = root;
+            newNode.Prev = null;
+            root = newNode;
+            count++;
+            Count = count;
+        }
+        else if (index == Count)
+        {
+            Add(value);
+            return;
+
+
+        }
+        else
+        {
+            MyNode<T> newNode = new MyNode<T>(value);
+
+        }
+
+    }
     public bool IsEmpty()
     {
         if (count == 0)
