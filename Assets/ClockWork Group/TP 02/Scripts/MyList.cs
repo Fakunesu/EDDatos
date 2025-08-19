@@ -202,20 +202,30 @@ public class MyList<T>
 
     public void insert(int index, T value)
     {
-        
-        if (index < 0 || index > Count){
-            throw new System.IndexOutOfRangeException();
-        }
 
-        else if (index == 0)
-        {
+        if (index < 0 || index > Count)
+            throw new System.IndexOutOfRangeException();
+
             MyNode<T> newNode = new MyNode<T>(value);
-            root.Prev = newNode;
-            newNode.Next = root;
-            newNode.Prev = null;
-            root = newNode;
-            count++;
-            Count = count;
+        
+        if (index == 0)
+        {
+
+            if (IsEmpty() == true)
+            {
+                tail = newNode;
+                root = newNode;
+            }
+            else
+            {
+                root.Prev = newNode;
+                newNode.Next = root;
+                newNode.Prev = null;
+                root = newNode;
+                count++;
+                Count = count;
+                
+            }
         }
         else if (index == Count)
         {
@@ -226,10 +236,18 @@ public class MyList<T>
         }
         else
         {
-            MyNode<T> newNode = new MyNode<T>(value);
-
+            MyNode<T> current = new MyNode<T>(value);
+            newNode = root;
+            for (int i = 0; i < index; ++i) {
+                current = current.Next;
+            }
+            newNode.Next = current;
+            newNode.Prev = current.Prev;
+            current.Prev.Next = newNode;
+            current.Prev = newNode;
         }
-
+        count++;
+        Count = count;
     }
     public bool IsEmpty()
     {
