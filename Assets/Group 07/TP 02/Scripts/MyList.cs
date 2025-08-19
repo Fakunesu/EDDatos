@@ -6,10 +6,10 @@ using System.Security.Cryptography;
 
 public class MyList<T>
 {
-    public int count = 0;
+    private int count = 0;
     private MyNode<T> root;
     private MyNode<T> tail;
-    public T value;
+   // public T value;
 
     public MyNode<T> node;
     public MyList()
@@ -17,11 +17,13 @@ public class MyList<T>
 
         this.root = null;
         this.tail = null;
-        Count = count;
+        //Count = count;
 
     }
-
-    public int Count { get; private set; }
+    
+    //Opcion 1: get, private set, modificas Count dentro del script
+    //Opcion 2: get return count, sin set, y modificas count dentro del script
+    public int Count { get { return count; } } //Esto seria la opcion 2
 
     public T this[int index]
     {
@@ -60,9 +62,8 @@ public class MyList<T>
             newNode.Prev = null;
             newNode.Next = null;
             count++;
-            Count = count;
         }
-        else if (IsEmpty() == false)
+        else
         {
             var newNode = new MyNode<T>(value);
             newNode.Prev = tail;
@@ -70,7 +71,6 @@ public class MyList<T>
             tail = newNode;
             newNode.Next = null;
             count++;
-            Count = count;
         }
     }
 
@@ -93,12 +93,10 @@ public class MyList<T>
             tail = ListValues.tail;
         }
 
-        count += ListValues.Count;
-        Count = count;
+        count += ListValues.count;
         ListValues.root = null;
         ListValues.tail = null;
         ListValues.count = 0;
-        ListValues.Count = ListValues.count;
     }
 
     public void AddRange(T[] collectionValues)
@@ -143,7 +141,6 @@ public class MyList<T>
                 }
 
                 count--;
-                Count = count;
                 return true;
 
             }
@@ -199,13 +196,11 @@ public class MyList<T>
         }
 
         count--;
-        Count = count;
 
     }
 
-    public void insert(int index, T value)
+    public void Insert(int index, T value)
     {
-
         if (index < 0 || index > Count)
             throw new System.IndexOutOfRangeException();
 
@@ -232,8 +227,6 @@ public class MyList<T>
         {
             Add(value);
             return;
-
-
         }
         else
         {
@@ -248,7 +241,6 @@ public class MyList<T>
             current.Prev = newNode;
         }
         count++;
-        Count = count;
     }
     public bool IsEmpty()
     {
@@ -270,19 +262,9 @@ public class MyList<T>
             current = next;
         }
 
-        /*  for (int i = 0; i <= Count; ++i) 
-          {
-              current = current.Next;
-              current.Prev = null;
-              if (i == Count)
-              {
-                  current = null;
-              }
-          }*/
         root = null;
         tail = null;
         count = 0;
-        Count = count;
     }
 
     public override string ToString()
