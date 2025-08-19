@@ -8,6 +8,7 @@ TagManager:
   - ArrayText
   - UIText
   - CountText
+  - MoneyCount
   layers:
   - Default
   - TransparentFX
