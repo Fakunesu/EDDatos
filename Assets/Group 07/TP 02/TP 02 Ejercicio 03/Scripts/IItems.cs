@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine;
 public interface IItems
 {
     string ID { get; }
@@ -8,5 +8,9 @@ public interface IItems
     int Price { get; }
     string Rarity {  get; }
     string Type { get; }
+
+    Sprite Icon { get; }
+
+    void AsignarSprite(ItemListSO itemImage);
 
 }
