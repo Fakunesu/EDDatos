@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using MyLinkedList;
 
-public class StoreUI : MonoBehaviour
+public class StoreManager : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private Transform itemContainer;

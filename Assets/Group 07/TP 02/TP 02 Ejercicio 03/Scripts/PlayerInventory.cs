@@ -1,33 +1,38 @@
-using UnityEngine;
 using MyLinkedList;
+using UnityEngine;
 
 public class PlayerInventory
 {
-    private MyList<IItems> inventario = new MyList<IItems>();
+    private MyList<IItems> items;
+
+    public PlayerInventory()
+    {
+        items = new MyList<IItems>();
+    }
 
     public void AgregarItem(IItems item)
     {
-        inventario.Add(item);
-        Debug.Log($"Item agregado al inventario: {item.ID}");
+        items.Add(item);
+        Debug.Log($"Inventario: {items.ToString()}");
     }
 
-    public void VenderItem(IItems item, ref int dineroJugador)
+    public void EliminarItem(IItems item)
     {
-        if (inventario.Remove(item))
+        if (items.Remove(item))
         {
-            dineroJugador += item.Price;
-            Debug.Log($"Vendiste: {item.Name} por ${item.Price}");
+            Debug.Log($"{item.Name} eliminado del inventario");
         }
         else
         {
-            Debug.Log("Ese ítem no está en tu inventario");
+            Debug.Log($"{item.Name} no encontrado en el inventario");
         }
     }
 
-    public MyList<IItems> GetInventario()
+    public int CantidadItems => items.Count;
+
+    public IItems GetItem(int index)
     {
-        return inventario;
+        return items[index];
     }
 }
-
 
