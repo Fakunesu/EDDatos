@@ -755,7 +755,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1040,11 +1040,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761202859751110533, guid: 1145adb4e1296e043a25aa006eb7a960, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 138
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1761202859751110533, guid: 1145adb4e1296e043a25aa006eb7a960, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 153
+      value: -69
       objectReference: {fileID: 0}
     - target: {fileID: 1761202859751110533, guid: 1145adb4e1296e043a25aa006eb7a960, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

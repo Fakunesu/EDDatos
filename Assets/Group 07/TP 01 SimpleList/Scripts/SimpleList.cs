@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Diagnostics;
+using UnityEngine;
+using static UnityEditor.Progress;
 
 public class SimpleList<T> : ISimpleList<T>
     {
@@ -69,6 +70,26 @@ public class SimpleList<T> : ISimpleList<T>
             for (int i = 0; i < count; i++)
             {
                 if (Equals(array[i], item))
+                {
+
+                    for (int j = i; j < count - 1; j++)
+                    {
+                        array[j] = array[j + 1];
+                    }
+
+                    count--;
+                    array[count] = default;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool RemoveAt(int position)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (i == position)
                 {
 
                     for (int j = i; j < count - 1; j++)
