@@ -18,8 +18,10 @@ public class PlayerController : MonoBehaviour
 
         if (input != Vector2.zero)
         {
-            transform.Translate(input * speed * Time.deltaTime);
-            inputQueue.Enqueue(input);
+            var mov = input * speed * Time.deltaTime;
+            transform.Translate(mov);
+            inputQueue.Enqueue(mov);
+            Debug.Log("Encola: " + mov);
         }
     }
 }
