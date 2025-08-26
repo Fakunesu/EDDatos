@@ -72,7 +72,7 @@ public class MyQueue<T>
             item = queue[0];
             queue.RemoveAt(0);
             count--;
-            Debug.Log($"{item} Dequeued.");
+            //Debug.Log($"{item} Dequeued.");
             return true;
         }
     }

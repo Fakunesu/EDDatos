@@ -74,7 +74,7 @@ public class MyStack<T>
             item = array[count - 1];
             array.RemoveAt(count - 1);
             count--;
-            Debug.Log($"{item} Popped.");
+            //Debug.Log($"{item} Popped.");
             return true;
         }
     }
