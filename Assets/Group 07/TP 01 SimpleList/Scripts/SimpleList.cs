@@ -105,6 +105,39 @@ public class SimpleList<T> : ISimpleList<T>
             return false;
         }
 
+    /*public void BubbleSort()
+    {
+        for (int i = 0; i < count; i++)
+        {
+            for (int j = 0; j < count - 1 - i; j++)
+            {
+                if (array[j] > array[j+1])
+                {
+                    var aux = array[j+1];
+                    array[j+1] = array[j];
+                    array[j] = aux;
+                }
+            }
+        }
+    }*/
+
+    /*public void SelectionSort()
+    {
+        for (int i=0; i<count; i++)
+        {
+            var m = i;
+            for (int j=m+1; j<count; j++)
+            {
+                if (array[j] < array[m])
+                {
+                    var aux = array[j];
+                    array[j] = array[m];
+                    array[m] = aux;
+                }
+            }
+        }
+    }*/
+
         public override string ToString()
         {
             string resultado = "";
