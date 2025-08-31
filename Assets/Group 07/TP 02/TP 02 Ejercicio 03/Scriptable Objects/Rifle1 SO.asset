@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec2d0bd026a764b44aa8b2fa48705200, type: 3}
-  m_Name: ItemSO
+  m_Name: Rifle1 SO
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: SG-09 R
-  <Sprite>k__BackingField: {fileID: 21300000, guid: ada7124c0132d4c4d90b08d6bcd08427, type: 3}
+  <ItemName>k__BackingField: SR M1903
+  <Sprite>k__BackingField: {fileID: 0}
+  <Price>k__BackingField: 0

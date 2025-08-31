@@ -31,11 +31,24 @@ public class StoreManager : MonoBehaviour
             IItems item = itemsDB[i];
 
             GameObject boton = Instantiate(itemButtonPrefab, itemContainer);
-            boton.GetComponentInChildren<TextMeshProUGUI>().text = $"{item.Name} - ${item.Price}";
-            boton.GetComponent<Image>().sprite = item.Icon;
+
+            // Texto
+            var texto = boton.GetComponentInChildren<TextMeshProUGUI>(true);
+            if (texto != null) texto.text = $"{item.Name} - ${item.Price}";
+
+            // Imagen (en root o en un hijo)
+            var img = boton.GetComponentInChildren<Image>(true);
+            if (img != null)
+            {
+                img.sprite = item.Icon;
+                img.enabled = (item.Icon != null);
+                if (item.Icon == null)
+                    Debug.LogWarning($"[Store] Sprite no encontrado para '{item.Name}'. ¿Coincide con ItemSO.ItemName?");
+            }
 
             IItems itemCapturado = item;
-            boton.GetComponent<Button>().onClick.AddListener(() => ComprarItem(itemCapturado));
+            var btn = boton.GetComponent<Button>();
+            if (btn != null) btn.onClick.AddListener(() => ComprarItem(itemCapturado));
         }
     }
 
@@ -46,6 +59,7 @@ public class StoreManager : MonoBehaviour
             dineroJugador -= item.Price;
             ActualizarDineroUI();
             playerInventory.AgregarItem(item);
+            Debug.Log($"Inventario ahora: {playerInventory.CantidadItems} items.");
             Debug.Log($"You bought: {item.Name}");
         }
         else

@@ -8,7 +8,7 @@ public interface IItems
     int Price { get; }
     string Rarity {  get; }
     string Type { get; }
-
+    
     Sprite Icon { get; }
 
     void AsignarSprite(ItemListSO itemImage);

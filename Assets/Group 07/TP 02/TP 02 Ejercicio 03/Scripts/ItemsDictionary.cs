@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemsDictionary : MyList<IItems>
 {
-    private MyList<IItems> itemList = new MyList<IItems>();
     private Dictionary<string, IItems> items = new Dictionary<string, IItems>();
 
     public ItemsDictionary(ItemListSO itemImage)
@@ -19,30 +18,23 @@ public class ItemsDictionary : MyList<IItems>
         AddItem(new Items("SMG Ammo", 10, "Common", "Ammo"), itemImage);
     }
 
-
-
     private void AddItem(IItems item, ItemListSO itemImage)
     {
-        item.AsignarSprite(itemImage);
-        items.Add(item.ID, item);
-        itemList.Add(item);
+        item.AsignarSprite(itemImage);       // setea Icon
+        items[item.ID] = item;               // lookup por ID
+        Add(item);                           // *** clave: cargar la lista base ***
     }
+
     public IItems GetItemById(string id)
     {
-        items.TryGetValue(id, out IItems item);
-            return item;
-        
+        return items.TryGetValue(id, out var item) ? item : null;
     }
+
     public override string ToString()
     {
         string result = "";
         foreach (var kvp in items)
-        {
-            result += $"{kvp.Key}: {kvp.Value.ToString()}\n";
-        }
+            result += $"{kvp.Key}: {kvp.Value}\n";
         return result;
-
     }
-
-
 }
