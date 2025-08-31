@@ -46,18 +46,18 @@ public class StoreManager : MonoBehaviour
             dineroJugador -= item.Price;
             ActualizarDineroUI();
             playerInventory.AgregarItem(item);
-            Debug.Log($"Compraste: {item.Name}");
+            Debug.Log($"You bought: {item.Name}");
         }
         else
         {
-            Debug.Log("No tenés suficiente dinero");
+            Debug.Log("Not enough cash, stranger!");
         }
     }
 
     void ActualizarDineroUI()
     {
         if (moneyText != null)
-            moneyText.text = $"Dinero: ${dineroJugador}";
+            moneyText.text = $"Money: ${dineroJugador}";
     }
 }
 
