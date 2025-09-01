@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AmmoS SO
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Shotgun Ammo
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: -7756029473660779847, guid: 05c95fd81ca81734390422bdeba8847c, type: 3}
   <Price>k__BackingField: 0

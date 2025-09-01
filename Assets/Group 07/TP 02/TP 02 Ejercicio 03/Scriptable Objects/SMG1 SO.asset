@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SMG1 SO
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: TMP
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: 8121290900878290512, guid: f61f7d765709da5478ab097f7d430563, type: 3}
   <Price>k__BackingField: 0

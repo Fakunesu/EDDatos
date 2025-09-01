@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shotgun SO
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Riot Gun
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: -2408530018317867212, guid: a57a4f8c29aea5547bea95e8a3c75e04, type: 3}
   <Price>k__BackingField: 0
