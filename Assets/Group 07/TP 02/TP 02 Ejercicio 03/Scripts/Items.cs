@@ -39,6 +39,8 @@ public class Items : IItems
     public void AsignarSprite(ItemListSO itemImage)
     {
         Icon = itemImage.GetSprite(this);
+        if (Icon == null)
+            Debug.LogWarning($"[AsignarSprite] No se encontró sprite para {Name}");
     }
 
     public override string ToString()

@@ -37,13 +37,11 @@ public class StoreManager : MonoBehaviour
             if (texto != null) texto.text = $"{item.Name} - ${item.Price}";
 
             // Imagen (en root o en un hijo)
-            var img = boton.GetComponentInChildren<Image>(true);
-            if (img != null)
+            var icon = boton.transform.Find("icon").GetComponent<Image>();
+            if (icon != null)
             {
-                img.sprite = item.Icon;
-                img.enabled = (item.Icon != null);
-                if (item.Icon == null)
-                    Debug.LogWarning($"[Store] Sprite no encontrado para '{item.Name}'. ¿Coincide con ItemSO.ItemName?");
+                icon.sprite = item.Icon;
+                icon.enabled = (item.Icon != null);
             }
 
             IItems itemCapturado = item;
@@ -67,6 +65,8 @@ public class StoreManager : MonoBehaviour
             Debug.Log("Not enough cash, stranger!");
         }
     }
+
+
 
     void ActualizarDineroUI()
     {
