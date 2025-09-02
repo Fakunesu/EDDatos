@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      buhonero_0: 8832376659571196295
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

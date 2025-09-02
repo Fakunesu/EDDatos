@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
+using System;
 using static UnityEditor.Progress;
 
 public class SimpleList<T> : ISimpleList<T>
@@ -111,7 +114,7 @@ public class SimpleList<T> : ISimpleList<T>
         {
             for (int j = 0; j < count - 1 - i; j++)
             {
-                if (array[j] > array[j+1])
+                if (array[j]>array[j+1])
                 {
                     var aux = array[j+1];
                     array[j+1] = array[j];
@@ -120,6 +123,8 @@ public class SimpleList<T> : ISimpleList<T>
             }
         }
     }*/
+
+
 
     /*public void SelectionSort()
     {
@@ -154,4 +159,7 @@ public class SimpleList<T> : ISimpleList<T>
 
             return resultado;
         }
-    }
+
+
+
+}
