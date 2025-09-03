@@ -6,7 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Group 07/TP 01 SimpleList/Scenes/TP01 SimpleList.unity
+    path: Assets/Group 07/Main Menu/Scene/MainMenu.unity
+    guid: 5407bb50cf451ab4ea08865197a78e5a
+  - enabled: 1
+    path: Assets/Group 07/TP 01 Ejercicio 01/Scenes/TP01_EJ01 _Scene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Group 07/TP 02 Ejercicio 02/Scene/TP02_EJ02_Scene.unity
+    guid: 4c8fc67f8c73ae042ad4e7cf1ca2c7fa
+  - enabled: 1
+    path: Assets/Group 07/TP 02 Ejercicio 02/TP 02 Ejercicio 03/Scene/TP02_EJ03_Scene.unity
+    guid: 7e07bb4406a7f8a4f9bc8207d5eb70a6
+  - enabled: 1
+    path: Assets/Group 07/TP 03 Ejercicio 04 & 05/Scenes/TP03_EJ04_Scene.unity
+    guid: 51ab14a6ab1ddae438ea7fc75ff7370b
+  - enabled: 1
+    path: Assets/Group 07/TP 03 Ejercicio 04 & 05/Scenes/TP03_EJ05_Scene.unity
+    guid: 615b0a30f434a1640a3d3ddc78fbb2d6
+  - enabled: 1
+    path: Assets/Group 07/TP 05/Scenes/TP05_EJ06_Scene.unity
+    guid: 61d3deacb49040f43998ec1a1b0ecf46
+  - enabled: 1
+    path: Assets/Group 07/TP 05/Scenes/Prueba_Factorial.unity
+    guid: c672babd7ce32484caa58e5922e5b1b7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
