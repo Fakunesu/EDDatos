@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class UndoManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed = 5f;
+    public MyStack<Vector2> inputStack = new MyStack<Vector2>();
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (input != Vector2.zero)
+        {
+            var mov = input * speed * Time.deltaTime;
+            transform.Translate(mov);
+            inputStack.Push(mov);
+        }
+
+        if (Input.GetKey(KeyCode.Z))
+        {
+            var mov = inputStack.Pop();
+            transform.Translate(-mov);
+
+        }
     }
 }

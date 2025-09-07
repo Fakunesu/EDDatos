@@ -23,5 +23,6 @@ public class PlayerController : MonoBehaviour
             inputQueue.Enqueue(mov);
             Debug.Log("Encola: " + mov);
         }
+
     }
 }

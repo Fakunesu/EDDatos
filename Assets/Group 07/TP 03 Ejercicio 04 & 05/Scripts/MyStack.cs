@@ -64,7 +64,7 @@ public class MyStack<T>
 
     public bool TryPop(out T item)
     {
-        if (array.Count == 0)
+        if (count == 0)
         {
             item = default(T);
             return false;
