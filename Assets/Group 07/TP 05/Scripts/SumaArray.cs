@@ -34,7 +34,7 @@ public class SumaArray : MonoBehaviour
         }
         else
         {
-            return n + Suma(n-1);
+            return n-1 + Suma(n-1);
         }
         
 

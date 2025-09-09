@@ -357,7 +357,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -1349,7 +1349,7 @@ GameObject:
   - component: {fileID: 605235148}
   - component: {fileID: 605235147}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Piramide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 605235148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 820693893}
+        m_TargetAssemblyTypeName: Piramide, Assembly-CSharp
+        m_MethodName: MostrarPiramide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &605235148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1620,8 @@ GameObject:
   - component: {fileID: 820693886}
   - component: {fileID: 820693891}
   - component: {fileID: 820693892}
+  - component: {fileID: 820693893}
+  - component: {fileID: 820693894}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1746,6 +1760,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 516122809}
   outputText: {fileID: 104706360}
+--- !u!114 &820693893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820693885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9033ad18be2d624daed194a3f0e2c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 516122809}
+  outputText: {fileID: 104706360}
+--- !u!114 &820693894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820693885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbf419fa3e649b4e8e81d78fca83344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 516122809}
+  outputText: {fileID: 104706360}
 --- !u!1 &905516029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,7 +1801,7 @@ GameObject:
   - component: {fileID: 905516032}
   - component: {fileID: 905516031}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Palindromo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1828,7 +1870,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 905516032}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 820693894}
+        m_TargetAssemblyTypeName: Palindromo, Assembly-CSharp
+        m_MethodName: MostrarPalindromo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &905516032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,7 +2111,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Piramide
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2326,7 +2380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Palindromo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

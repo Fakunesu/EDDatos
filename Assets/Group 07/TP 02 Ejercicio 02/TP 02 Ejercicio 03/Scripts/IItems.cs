@@ -11,6 +11,6 @@ public interface IItems
     
     Sprite Icon { get; }
 
-    void AsignarSprite(ItemListSO itemImage);
+   // void AsignarSprite(ItemListSO itemImage);
 
 }

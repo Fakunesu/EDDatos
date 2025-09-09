@@ -14,7 +14,8 @@ public class StoreManager : MonoBehaviour
     [Header("Configuración")]
     [SerializeField] private int dineroInicial = 10000;
 
-    private ItemsDictionary itemsDB;
+    //En vez de esto, tendria que ir la ItemListSO
+    //private ItemsDictionary itemsDB;
     private PlayerInventory playerInventory;
     private int dineroJugador;
 
@@ -23,9 +24,11 @@ public class StoreManager : MonoBehaviour
         dineroJugador = dineroInicial;
         ActualizarDineroUI();
 
-        itemsDB = new ItemsDictionary(itemVisuals);
+        //itemsDB = new ItemsDictionary(itemVisuals);
         playerInventory = new PlayerInventory();
 
+        //Reemplazar por ItemListSO y descomentar
+        /*
         for (int i = 0; i < itemsDB.Count; i++)
         {
             IItems item = itemsDB[i];
@@ -48,6 +51,7 @@ public class StoreManager : MonoBehaviour
             var btn = boton.GetComponent<Button>();
             if (btn != null) btn.onClick.AddListener(() => ComprarItem(itemCapturado));
         }
+        */
     }
 
     void ComprarItem(IItems item)

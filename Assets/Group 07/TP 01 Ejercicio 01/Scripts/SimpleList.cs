@@ -108,13 +108,13 @@ public class SimpleList<T> : ISimpleList<T>
             return false;
         }
 
-    /*public void BubbleSort()
+    public void BubbleSort(Comparison<T> comparison)
     {
         for (int i = 0; i < count; i++)
         {
             for (int j = 0; j < count - 1 - i; j++)
             {
-                if (array[j]>array[j+1])
+                if (comparison (array[j], array[j+1])>0)
                 {
                     var aux = array[j+1];
                     array[j+1] = array[j];
@@ -122,18 +122,21 @@ public class SimpleList<T> : ISimpleList<T>
                 }
             }
         }
-    }*/
+    }
 
 
 
-    /*public void SelectionSort()
+
+
+    public void Sort(Comparison<T> comparison)
     {
-        for (int i=0; i<count; i++)
+        //Aplicando el codigo de selection sort con Comparison
+        for (int i = 0; i < count; i++)
         {
             var m = i;
-            for (int j=m+1; j<count; j++)
+            for (int j = m + 1; j < count; j++)
             {
-                if (array[j] < array[m])
+                if (comparison(array[j], array[m]) == -1)  //array[j] < array[m]
                 {
                     var aux = array[j];
                     array[j] = array[m];
@@ -141,9 +144,9 @@ public class SimpleList<T> : ISimpleList<T>
                 }
             }
         }
-    }*/
+    }
 
-        public override string ToString()
+    public override string ToString()
         {
             string resultado = "";
 

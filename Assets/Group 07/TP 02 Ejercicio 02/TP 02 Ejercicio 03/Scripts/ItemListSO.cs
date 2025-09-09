@@ -4,8 +4,21 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "ItemListSO", menuName = "ScriptableObjects/ItemList")]
 public class ItemListSO : ScriptableObject
 {
-    [SerializeField] private ItemSO[] items;
+    [field: SerializeField] public ItemSO[] items { get; private set; }
 
+    private void OnValidate()
+    {
+        if (items == null) return;
+        for(int i = 0; i < items.Length; i++)
+        {
+            if(items[i] == null)
+            {
+                items[i].SetID(i);
+            }
+        }
+    }
+
+    /*
     private Dictionary<string, Sprite> spriteLookup;
 
     private void OnEnable()
@@ -24,4 +37,5 @@ public class ItemListSO : ScriptableObject
         spriteLookup.TryGetValue(item.Name, out Sprite sprite);
         return sprite;
     }
+    */
 }
