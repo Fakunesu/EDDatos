@@ -9,6 +9,7 @@ TagManager:
   - UIText
   - CountText
   - MoneyCount
+  - ListaText
   layers:
   - Default
   - TransparentFX

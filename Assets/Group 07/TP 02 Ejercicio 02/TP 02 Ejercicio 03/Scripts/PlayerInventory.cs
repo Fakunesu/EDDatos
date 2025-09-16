@@ -1,38 +1,43 @@
-using MyLinkedList;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory
 {
-    private MyList<IItems> items;
+    private ItemListSO data;
 
-    public PlayerInventory()
-    {
-        items = new MyList<IItems>();
-    }
-
-    public void AgregarItem(IItems item)
-    {
-        items.Add(item);
-        Debug.Log($"Inventario: {items.ToString()}");
-    }
-
-    public void EliminarItem(IItems item)
-    {
-        if (items.Remove(item))
-        {
-            Debug.Log($"{item.Name} eliminado del inventario");
-        }
-        else
-        {
-            Debug.Log($"{item.Name} no encontrado en el inventario");
-        }
-    }
+    private Dictionary<int, int> items = new Dictionary<int, int>();
 
     public int CantidadItems => items.Count;
 
-    public IItems GetItem(int index)
+    public PlayerInventory(ItemListSO data)
     {
-        return items[index];
+        this.data = data;
+    }
+
+    public void AgregarItem(ItemSO item)
+    {
+        if (items.ContainsKey(item.ID))
+            items[item.ID]++;
+        else
+            items.Add(item.ID, 1);
+
+        Debug.Log($"Inventario: {items.ToString()}");
+    }
+
+    public void EliminarItem(ItemSO item)
+    {
+        if (items.ContainsKey(item.ID))
+        {
+            items[item.ID]--;
+
+            if (items[item.ID] < 1)
+                items.Remove(item.ID);
+            Debug.Log($"{item.ItemName} eliminado del inventario");
+        }
+        else
+        {
+            Debug.Log($"{item.ItemName} no encontrado en el inventario");
+        }
     }
 }
 

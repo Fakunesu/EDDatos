@@ -1,22 +1,27 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System;
 
 [CreateAssetMenu(fileName = "ItemListSO", menuName = "ScriptableObjects/ItemList")]
 public class ItemListSO : ScriptableObject
 {
     [field: SerializeField] public ItemSO[] items { get; private set; }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
-        if (items == null) return;
-        for(int i = 0; i < items.Length; i++)
-        {
-            if(items[i] == null)
-            {
+        if (UnityEditor.EditorApplication.isPlaying)
+            return;
+
+        //Debug.Log("OnValidate ItemListSO ");
+        if (items == null)
+            return;
+        for (int i = 0; i < items.Length; i++)
+            if (items[i] != null)
                 items[i].SetID(i);
-            }
-        }
+
+        UnityEditor.EditorUtility.SetDirty(this);
     }
+#endif
 
     /*
     private Dictionary<string, Sprite> spriteLookup;

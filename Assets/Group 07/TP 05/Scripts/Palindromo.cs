@@ -13,7 +13,7 @@ public class Palindromo : MonoBehaviour
 
     public void MostrarPalindromo()
     {
-        PalindromoFunction(StringToCharArray(inputField.text), index);
+        outputText.text = PalindromoFunction(StringToCharArray(inputField.text), index);
     }
 
     public char[] StringToCharArray(string palabra)

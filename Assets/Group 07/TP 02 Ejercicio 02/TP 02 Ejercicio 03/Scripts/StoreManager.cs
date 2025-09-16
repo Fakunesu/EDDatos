@@ -1,7 +1,8 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using MyLinkedList;
+using static UnityEditor.Progress;
 
 public class StoreManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class StoreManager : MonoBehaviour
     [SerializeField] private GameObject itemButtonPrefab;
     [SerializeField] private ItemListSO itemVisuals;
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private ItemListSO data;
+    private Dictionary<int, int> items = new Dictionary<int, int>(); // ID, Cantidad
 
     [Header("Configuración")]
     [SerializeField] private int dineroInicial = 10000;
@@ -19,42 +22,53 @@ public class StoreManager : MonoBehaviour
     private PlayerInventory playerInventory;
     private int dineroJugador;
 
+    private void Awake()
+    {
+        //for (int i = 0; i < data.items.Length; i++)
+        //    data.items[i].SetID(i);
+    }
+
     void Start()
     {
         dineroJugador = dineroInicial;
         ActualizarDineroUI();
 
         //itemsDB = new ItemsDictionary(itemVisuals);
-        playerInventory = new PlayerInventory();
+        playerInventory = new PlayerInventory(data);
 
         //Reemplazar por ItemListSO y descomentar
-        /*
-        for (int i = 0; i < itemsDB.Count; i++)
-        {
-            IItems item = itemsDB[i];
 
+        for (int i = 0; i < data.items.Length; i++)
+        {
+            ItemSO item = data.items[i];
             GameObject boton = Instantiate(itemButtonPrefab, itemContainer);
 
             // Texto
             var texto = boton.GetComponentInChildren<TextMeshProUGUI>(true);
-            if (texto != null) texto.text = $"{item.Name} - ${item.Price}";
+            if (texto != null) texto.text = $"{item.ItemName} - ${item.Price}";
 
             // Imagen (en root o en un hijo)
             var icon = boton.transform.Find("icon").GetComponent<Image>();
             if (icon != null)
             {
-                icon.sprite = item.Icon;
-                icon.enabled = (item.Icon != null);
+                icon.sprite = item.Sprite;
+                icon.enabled = (item.Sprite != null);
             }
 
-            IItems itemCapturado = item;
-            var btn = boton.GetComponent<Button>();
-            if (btn != null) btn.onClick.AddListener(() => ComprarItem(itemCapturado));
+            ItemSO itemCapturado = item;
+            Button btn = boton.GetComponent<Button>();
+            if (item.ID < 4)
+                items.Add(item.ID, 3); // Agregamos 3 de cada municion
+            else
+                items.Add(item.ID, 1); // Agregamos 3 de cada otros items
+
+
+            if (btn != null)
+                btn.onClick.AddListener(() => ComprarItem(itemCapturado));
         }
-        */
     }
 
-    void ComprarItem(IItems item)
+    void ComprarItem(ItemSO item)
     {
         if (dineroJugador >= item.Price)
         {
@@ -62,7 +76,7 @@ public class StoreManager : MonoBehaviour
             ActualizarDineroUI();
             playerInventory.AgregarItem(item);
             Debug.Log($"Inventario ahora: {playerInventory.CantidadItems} items.");
-            Debug.Log($"You bought: {item.Name}");
+            Debug.Log($"You bought: {item.ItemName}");
         }
         else
         {
