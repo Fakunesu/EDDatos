@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 [CreateAssetMenu(fileName = "ItemListSO", menuName = "ScriptableObjects/ItemList")]
-public class ItemListSO : ScriptableObject
+public class DataBaseSO : ScriptableObject
 {
     [field: SerializeField] public ItemSO[] items { get; private set; }
 

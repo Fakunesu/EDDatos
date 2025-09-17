@@ -11,16 +11,18 @@ public class Piramide : MonoBehaviour
 
     string line;
     int renglones;
+    int cantX;
+    int espacios;
     public void MostrarPiramide()
     {
         int n;
 
         if (int.TryParse(inputField.text, out n) && n >= 0)
         {
-            PiramideFunction(n);
-            outputText.text = line;
-            line = null;
+            line = "";
             renglones = 0;
+            PiramideFunction(n, 1);
+            outputText.text = line;
         }
         else
         {
@@ -29,19 +31,25 @@ public class Piramide : MonoBehaviour
     }
     // line = new string ('X', n)
 
-    public string PiramideFunction(int pisos)
+    public string PiramideFunction(int pisos, int nivelActual)
     {
-        if (pisos <= 0)
+        if (nivelActual>pisos)
         {
             return new string (" ");
 
         }
         else
         {
-            renglones++;
-            line += new string ('X', renglones) + "\n";
+            renglones++;      
+            cantX = 2* nivelActual - 1;
+            espacios = pisos- nivelActual;
+            line += new string('-', espacios) + new string('X', cantX) + "\n";
             Debug.Log(line);
-            return PiramideFunction(pisos - 1); 
+            return PiramideFunction(pisos, nivelActual + 1); 
         }
     }
 }
+
+
+//            line += new string ('X', renglones) + "\n";
+   

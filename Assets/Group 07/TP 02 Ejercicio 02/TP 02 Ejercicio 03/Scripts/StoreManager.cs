@@ -9,9 +9,9 @@ public class StoreManager : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private Transform itemContainer;
     [SerializeField] private GameObject itemButtonPrefab;
-    [SerializeField] private ItemListSO itemVisuals;
+    [SerializeField] private DataBaseSO itemVisuals;
     [SerializeField] private TextMeshProUGUI moneyText;
-    [SerializeField] private ItemListSO data;
+    [SerializeField] private DataBaseSO data;
     private Dictionary<int, int> items = new Dictionary<int, int>(); // ID, Cantidad
 
     [Header("Configuración")]

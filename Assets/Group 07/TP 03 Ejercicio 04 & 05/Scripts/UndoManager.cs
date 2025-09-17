@@ -23,11 +23,16 @@ public class UndoManager : MonoBehaviour
             inputStack.Push(mov);
         }
 
-        if (Input.GetKey(KeyCode.Z))
-        {
-            var mov = inputStack.Pop();
-            transform.Translate(-mov);
 
+        if (inputStack.count >= 0)
+        {
+
+             if (Input.GetKey(KeyCode.Z))
+             {
+                 var mov = inputStack.Pop();
+                 transform.Translate(-mov);
+
+             }
         }
     }
 }

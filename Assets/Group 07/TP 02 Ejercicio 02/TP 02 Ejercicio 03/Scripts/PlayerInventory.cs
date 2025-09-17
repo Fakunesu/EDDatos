@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PlayerInventory
 {
-    private ItemListSO data;
+    private DataBaseSO data;
 
     private Dictionary<int, int> items = new Dictionary<int, int>();
 
     public int CantidadItems => items.Count;
 
-    public PlayerInventory(ItemListSO data)
+    public PlayerInventory(DataBaseSO data)
     {
         this.data = data;
     }
