@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Rifle Ammo
   <Sprite>k__BackingField: {fileID: 2941751228291235528, guid: 2b0825bb0907871448e0500ba27812c3, type: 3}
-  <Price>k__BackingField: 1
+  <Price>k__BackingField: 200

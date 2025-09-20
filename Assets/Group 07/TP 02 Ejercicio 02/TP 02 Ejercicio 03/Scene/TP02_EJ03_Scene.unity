@@ -1094,7 +1094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &890826024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 30, y: 30}
+  m_Spacing: {x: 30, y: 40}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!114 &1070850647
@@ -1515,7 +1515,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 30, y: 40}
+  m_Spacing: {x: 30, y: 60}
   m_Constraint: 1
   m_ConstraintCount: 4
 --- !u!1 &1208757065
@@ -1531,6 +1531,7 @@ GameObject:
   - component: {fileID: 1208757067}
   - component: {fileID: 1208757066}
   - component: {fileID: 1208757070}
+  - component: {fileID: 1208757071}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1637,8 +1638,26 @@ MonoBehaviour:
   itemContainer: {fileID: 1144977126}
   itemButtonPrefab: {fileID: 364094927336490100, guid: 1145adb4e1296e043a25aa006eb7a960, type: 3}
   itemVisuals: {fileID: 11400000, guid: bc0fd9bcd4ab56343ba004d67baf3b7e, type: 2}
-  moneyText: {fileID: 109607478}
+  moneyText: {fileID: 0}
   data: {fileID: 11400000, guid: bc0fd9bcd4ab56343ba004d67baf3b7e, type: 2}
+  playerInventory: {fileID: 1565326461}
+--- !u!114 &1208757071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208757065}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbcf78ef00b3df4ebd57608fe947d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storeManager: {fileID: 0}
+  itemContainer: {fileID: 1070850645}
+  itemButtonPrefab: {fileID: 364094927336490100, guid: 1145adb4e1296e043a25aa006eb7a960, type: 3}
+  itemVisuals: {fileID: 11400000, guid: bc0fd9bcd4ab56343ba004d67baf3b7e, type: 2}
+  moneyText: {fileID: 109607478}
   dineroInicial: 10000
 --- !u!1 &1339659412
 GameObject:
@@ -2080,6 +2099,7 @@ GameObject:
   - component: {fileID: 1565326458}
   - component: {fileID: 1565326460}
   - component: {fileID: 1565326459}
+  - component: {fileID: 1565326461}
   m_Layer: 5
   m_Name: Inventory Panel
   m_TagString: Untagged
@@ -2147,6 +2167,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565326457}
   m_CullTransparentMesh: 1
+--- !u!114 &1565326461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565326457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbcf78ef00b3df4ebd57608fe947d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storeManager: {fileID: 1208757070}
+  itemContainer: {fileID: 1070850645}
+  itemButtonPrefab: {fileID: 364094927336490100, guid: 1145adb4e1296e043a25aa006eb7a960, type: 3}
+  itemVisuals: {fileID: 11400000, guid: bc0fd9bcd4ab56343ba004d67baf3b7e, type: 2}
+  moneyText: {fileID: 109607478}
+  dineroInicial: 10000
 --- !u!1 &1724577174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1939358922
 RectTransform:
   m_ObjectHideFlags: 0
