@@ -15,3 +15,4 @@ MonoBehaviour:
   <ItemName>k__BackingField: HandGun Ammo
   <Sprite>k__BackingField: {fileID: -1419124751633158272, guid: 0b9a855b637b6184098926732839256b, type: 3}
   <Price>k__BackingField: 50
+  <Type>k__BackingField: Ammo

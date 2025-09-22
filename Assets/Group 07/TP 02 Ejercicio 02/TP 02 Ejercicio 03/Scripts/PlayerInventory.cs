@@ -1,3 +1,5 @@
+using MyLinkedList;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -128,6 +130,36 @@ public class PlayerInventory : MonoBehaviour
             Debug.Log($"{item.ItemName} no encontrado en el inventario");
         }
 
+    }
+
+    public void OrdenarInventario(SortOption option)
+    {
+        MyList<ItemSO> lista = new MyList<ItemSO>();
+
+        foreach (var kvp in items)
+        {
+            ItemSO item = itemVisuals.items[kvp.Key];
+            lista.Add(item);
+        }
+
+        Comparison<ItemSO> comp = ItemSOComparers.ByID;
+        if (option == SortOption.Name) comp = ItemSOComparers.ByName;
+        else if (option == SortOption.Price) comp = ItemSOComparers.ByPrice;
+
+        lista.SelectionSort(comp);
+
+        int i = 0;
+        MyNode<ItemSO> current = lista.node;
+        while (current != null)
+        {
+            ItemSO item = current.Value;
+            if (itemButton.ContainsKey(item.ID))
+            {
+                itemButton[item.ID].transform.SetSiblingIndex(i);
+            }
+            current = current.Next;
+            i++;
+        }
     }
 
     void ActualizarTextoUI(ItemSO item)

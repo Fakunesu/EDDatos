@@ -290,38 +290,75 @@ public class MyList<T>
         }
     }
 
+  //    public void SelectionSort(Comparison<T> comparison)
+  //    {
+  //        for (int i = 0; i < Count - 1; i++)
+  //        {
+  //            MyNode<T> min = this.root;
+  //            for (int k=0; k < i; k++)
+  //            {
+  //                min = min.Next;
+  //            }
+  //
+  //            MyNode<T> current = min;
+  //
+  //            for (int j=i +1; j<Count; i++)
+  //            {
+  //                MyNode<T> runner= this.root;
+  //
+  //                for (int k= 0; k <j; k++)
+  //                {
+  //                    runner = runner.Next;
+  //                }
+  //                if (comparison(runner.Value, min.Value)<0)
+  //                {
+  //                    min = runner;
+  //                }
+  //            }
+  //
+  //            if (min != current)
+  //            {
+  //                T aux = current.Value;
+  //                current.Value= min.Value;
+  //                min.Value = aux;
+  //            }
+  //        }
+  //    }
+
     public void SelectionSort(Comparison<T> comparison)
     {
-        for (int i = 0; i < Count - 1; i++)
+        if (count < 2 || comparison == null)
+            return;
+
+       
+        MyNode<T> start = root;
+
+        while (start != null)
         {
-            MyNode<T> min = this.root;
-            for (int k=0; k < i; k++)
+            
+            MyNode<T> min = start;
+
+           
+            MyNode<T> runner = start.Next;
+            while (runner != null)
             {
-                min = min.Next;
-            }
-
-            MyNode<T> current = min;
-
-            for (int j=i +1; j<Count; i++)
-            {
-                MyNode<T> runner= this.root;
-
-                for (int k= 0; k <j; k++)
-                {
-                    runner = runner.Next;
-                }
-                if (comparison(runner.Value, min.Value)<0)
+                if (comparison(runner.Value, min.Value) < 0)
                 {
                     min = runner;
                 }
+                runner = runner.Next;
             }
 
-            if (min != current)
+            
+            if (min!=start)
             {
-                T aux = current.Value;
-                current.Value= min.Value;
-                min.Value = aux;
+                T temp = start.Value;
+                start.Value = min.Value;
+                min.Value = temp;
             }
+
+            
+            start = start.Next;
         }
     }
 

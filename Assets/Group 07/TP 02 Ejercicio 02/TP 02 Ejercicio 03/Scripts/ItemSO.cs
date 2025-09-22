@@ -11,6 +11,7 @@ public class ItemSO : ScriptableObject
 
     [field: SerializeField] public int Price { get; private set; }
 
+    [field: SerializeField] public string Type { get; private set; }
     public void SetID(int id)
     {
 #if UNITY_EDITOR

@@ -1,3 +1,5 @@
+using MyLinkedList;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.UIElements;
@@ -5,6 +7,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
+public enum SortOption
+{
+    ID,
+    Name,
+    Price
+}
 public class StoreManager : MonoBehaviour
 {
     [Header("Referencias")]
@@ -39,7 +47,7 @@ public class StoreManager : MonoBehaviour
             // Texto
             var texto = boton.GetComponentInChildren<TextMeshProUGUI>(true);
             items.TryGetValue(item.ID, out int amount);
-            if (texto != null) texto.text = $"{item.ItemName} \n x{ amount} \n -${item.Price}";
+            if (texto != null) texto.text = $"{item.ItemName} \n x{items[item.ID]} \n -${item.Price}";
 
             // Imagen (en root o en un hijo)
             var icon = boton.transform.Find("icon").GetComponent<Image>();
@@ -91,7 +99,7 @@ public class StoreManager : MonoBehaviour
             items.Add(item.ID, 1);
             GameObject boton = Instantiate(itemButtonPrefab, itemContainer);
             var texto = boton.GetComponentInChildren<TextMeshProUGUI>(true);
-            if (texto != null) texto.text = $"{item.ItemName} x1";
+            if (texto != null) texto.text = $"{item.ItemName} \n x{items[item.ID]} \n -${item.Price}";
 
             var icon = boton.transform.Find("icon").GetComponent<Image>();
             if (icon != null)
@@ -137,10 +145,43 @@ public class StoreManager : MonoBehaviour
 
     }
 
-  //  public void OrdenarInventario(Dictionary<int, string> lista)
-  //  {
-  //      ItemSO item;
-  //  }
+    public void SortStore(SortOption option)
+    {
+        // 1. Pasar items actuales a MyList
+        MyList<ItemSO> lista = new MyList<ItemSO>();
+        foreach (var kvp in items)
+        {
+            ItemSO item = data.items[kvp.Key];
+            lista.Add(item);
+        }
+
+        // 2. Elegir comparador
+        Comparison<ItemSO> comp = ItemSOComparers.ByID;
+        if (option == SortOption.Name) comp = ItemSOComparers.ByName;
+        else if (option == SortOption.Price) comp = ItemSOComparers.ByPrice;
+
+        // 3. Ordenar
+        lista.SelectionSort(comp);
+
+        // 4. Reordenar en la UI
+        int i = 0;
+        MyNode<ItemSO> current = lista.node; // primer nodo
+        while (current != null)
+        {
+            ItemSO item = current.Value;
+            if (itemButton.ContainsKey(item.ID))
+            {
+                itemButton[item.ID].transform.SetSiblingIndex(i);
+            }
+            current = current.Next;
+            i++;
+        }
+    }
+
+    //  public void OrdenarInventario(Dictionary<int, string> lista)
+    //  {
+    //      ItemSO item;
+    //  }
 
     void ActualizarTextoUI(ItemSO item)
     {
@@ -148,6 +189,8 @@ public class StoreManager : MonoBehaviour
             if (texto != null) texto.text = $"{item.ItemName} \n x{items[item.ID]} \n -${item.Price}"; 
     }
 
-
+    public void SortStoreByID() { SortStore(SortOption.ID); }
+    public void SortStoreByName() { SortStore(SortOption.Name); }
+    public void SortStoreByPrice() { SortStore(SortOption.Price); }
 }
 
