@@ -137,6 +137,11 @@ public class StoreManager : MonoBehaviour
 
     }
 
+  //  public void OrdenarInventario(Dictionary<int, string> lista)
+  //  {
+  //      ItemSO item;
+  //  }
+
     void ActualizarTextoUI(ItemSO item)
     {
             var texto = itemButton[item.ID].GetComponentInChildren<TextMeshProUGUI>(true);

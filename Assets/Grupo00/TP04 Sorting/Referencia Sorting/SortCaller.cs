@@ -25,7 +25,7 @@ public class SortCaller : MonoBehaviour
         //Llamamos al Sort de SimpleList (lo programan ustedes)
         //Le pasamos por parametro una funcion que cumpla con la firma de Comparison
         //(Que reciba dos T, y devuelva un int)
-        transformList.Sort(CompareTransformX);
+        transformList.SelectionSort(CompareTransformX);
 
         //Printeamos la lista para testear que este ordenada
         for(int i = 0; i < transformList.Count; i++)

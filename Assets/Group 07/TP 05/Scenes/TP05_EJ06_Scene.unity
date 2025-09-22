@@ -289,7 +289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.3588, y: 8.0668}
+  m_AnchoredPosition: {x: 59.82691, y: 9.219205}
   m_SizeDelta: {x: 1108.8977, y: 339.8663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &104706360
@@ -563,7 +563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -389, y: -286}
+  m_AnchoredPosition: {x: -386.6952, y: -242.20842}
   m_SizeDelta: {x: 178.7693, y: 33.5192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432937405
@@ -1372,7 +1372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 192.31674, y: -286}
+  m_AnchoredPosition: {x: 194.62155, y: -242.20842}
   m_SizeDelta: {x: 178.7693, y: 33.5192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &605235147
@@ -1824,7 +1824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 386.72845, y: -286}
+  m_AnchoredPosition: {x: 389.03326, y: -242.20842}
   m_SizeDelta: {x: 178.7693, y: 33.5192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905516031
@@ -1957,7 +1957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -190.9201, y: -286}
+  m_AnchoredPosition: {x: -188.6153, y: -242.20842}
   m_SizeDelta: {x: 178.7693, y: 33.5192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948116985
@@ -2226,7 +2226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.84346, y: -286.00003}
+  m_AnchoredPosition: {x: 9.14827, y: -242.20845}
   m_SizeDelta: {x: 178.7693, y: 33.5192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1650375732

@@ -128,9 +128,9 @@ public class SimpleList<T> : ISimpleList<T>
 
 
 
-    public void Sort(Comparison<T> comparison)
+    public void SelectionSort(Comparison<T> comparison)
     {
-        //Aplicando el codigo de selection sort con Comparison
+        
         for (int i = 0; i < count; i++)
         {
             var m = i;

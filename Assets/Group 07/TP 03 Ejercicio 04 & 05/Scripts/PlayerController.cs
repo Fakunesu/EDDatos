@@ -6,11 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public MyQueue<Vector2> inputQueue= new MyQueue<Vector2>();
-    void Start()
-    {
-        
-    }
-
     
     void Update()
     {

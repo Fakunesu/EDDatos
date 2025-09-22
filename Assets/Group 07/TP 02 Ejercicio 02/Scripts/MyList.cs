@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 
 public class MyList<T>
 {
@@ -265,6 +266,63 @@ public class MyList<T>
         root = null;
         tail = null;
         count = 0;
+    }
+
+    public void BubbleSort(Comparison<T> comparison)
+    {
+        for (int i=0; i<Count -1; i++)
+        {
+            MyNode<T> current = root;
+            MyNode<T> next = root.Next;
+
+            for (int j= 0; j< Count -i -1; j++)
+            {
+                if (comparison(current.Value, next.Value)>0)
+                {
+                    T aux = current.Value;
+                    current.Value = next.Value;
+                    next.Value = aux;
+                }
+
+                current = next;
+                next = next.Next;
+            }
+        }
+    }
+
+    public void SelectionSort(Comparison<T> comparison)
+    {
+        for (int i = 0; i < Count - 1; i++)
+        {
+            MyNode<T> min = this.root;
+            for (int k=0; k < i; k++)
+            {
+                min = min.Next;
+            }
+
+            MyNode<T> current = min;
+
+            for (int j=i +1; j<Count; i++)
+            {
+                MyNode<T> runner= this.root;
+
+                for (int k= 0; k <j; k++)
+                {
+                    runner = runner.Next;
+                }
+                if (comparison(runner.Value, min.Value)<0)
+                {
+                    min = runner;
+                }
+            }
+
+            if (min != current)
+            {
+                T aux = current.Value;
+                current.Value= min.Value;
+                min.Value = aux;
+            }
+        }
     }
 
     public override string ToString()
