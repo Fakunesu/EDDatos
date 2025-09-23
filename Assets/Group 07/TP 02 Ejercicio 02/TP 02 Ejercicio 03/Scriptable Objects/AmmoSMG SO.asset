@@ -15,4 +15,5 @@ MonoBehaviour:
   <ItemName>k__BackingField: SMG Ammo
   <Sprite>k__BackingField: {fileID: 21300000, guid: a7ea58dc5c7a65148828655e391dd7fd, type: 3}
   <Price>k__BackingField: 50
+  <SellPrice>k__BackingField: 50
   <Type>k__BackingField: Ammo

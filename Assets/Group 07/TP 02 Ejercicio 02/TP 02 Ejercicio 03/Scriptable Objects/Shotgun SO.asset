@@ -15,4 +15,5 @@ MonoBehaviour:
   <ItemName>k__BackingField: Riot Gun
   <Sprite>k__BackingField: {fileID: -2408530018317867212, guid: a57a4f8c29aea5547bea95e8a3c75e04, type: 3}
   <Price>k__BackingField: 4000
+  <SellPrice>k__BackingField: 3750
   <Type>k__BackingField: Weapon

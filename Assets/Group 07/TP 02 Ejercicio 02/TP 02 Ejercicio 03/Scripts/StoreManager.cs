@@ -72,6 +72,7 @@ public class StoreManager : MonoBehaviour
         if (playerInventory.dineroJugador >= item.Price)
         {
             playerInventory.PlayerComproItem(item);
+            item.PriceElevate();
             EliminarItem(item);
             Debug.Log($"Inventario ahora: {playerInventory.CantidadItems} items.");
             Debug.Log($"You bought: {item.ItemName}");
@@ -162,12 +163,12 @@ public class StoreManager : MonoBehaviour
 
         // 3. Ordenar
         lista.SelectionSort(comp);
-
         // 4. Reordenar en la UI
         int i = 0;
-        MyNode<ItemSO> current = lista.node; // primer nodo
+        MyNode<ItemSO> current = lista.Root; // primer nodo
         while (current != null)
         {
+           
             ItemSO item = current.Value;
             if (itemButton.ContainsKey(item.ID))
             {

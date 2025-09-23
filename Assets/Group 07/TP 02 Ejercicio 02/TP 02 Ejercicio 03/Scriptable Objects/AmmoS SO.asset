@@ -15,4 +15,5 @@ MonoBehaviour:
   <ItemName>k__BackingField: Shotgun Ammo
   <Sprite>k__BackingField: {fileID: -7756029473660779847, guid: 05c95fd81ca81734390422bdeba8847c, type: 3}
   <Price>k__BackingField: 150
+  <SellPrice>k__BackingField: 0
   <Type>k__BackingField: Ammo

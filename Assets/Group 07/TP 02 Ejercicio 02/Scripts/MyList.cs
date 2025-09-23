@@ -10,7 +10,9 @@ public class MyList<T>
     private int count = 0;
     private MyNode<T> root;
     private MyNode<T> tail;
-   // public T value;
+    // public T value;
+
+    public MyNode<T> Root { get => root; set => root = value; }
 
     public MyNode<T> node;
     public MyList()

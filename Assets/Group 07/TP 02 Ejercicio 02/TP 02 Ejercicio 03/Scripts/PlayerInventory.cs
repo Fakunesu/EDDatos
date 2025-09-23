@@ -44,8 +44,9 @@ public class PlayerInventory : MonoBehaviour
             return;
         else
         {
-            dineroJugador += item.Price;
+            dineroJugador += item.SellPrice;
             ActualizarDineroUI();
+            item.PriceReduction();
             EliminarItem(item);
 
             if (storeManager != null)
