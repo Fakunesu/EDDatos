@@ -11,7 +11,8 @@ public enum SortOption
 {
     ID,
     Name,
-    Price
+    LowerPrice,
+    GreatestPrice
 }
 public class StoreManager : MonoBehaviour
 {
@@ -159,10 +160,11 @@ public class StoreManager : MonoBehaviour
         // 2. Elegir comparador
         Comparison<ItemSO> comp = ItemSOComparers.ByID;
         if (option == SortOption.Name) comp = ItemSOComparers.ByName;
-        else if (option == SortOption.Price) comp = ItemSOComparers.ByPrice;
+        else if (option == SortOption.LowerPrice) comp = ItemSOComparers.ByLowerPrice;
+        else if (option == SortOption.GreatestPrice) comp = ItemSOComparers.ByGreatestPrice;
 
-        // 3. Ordenar
-        lista.SelectionSort(comp);
+            // 3. Ordenar
+            lista.SelectionSort(comp);
         // 4. Reordenar en la UI
         int i = 0;
         MyNode<ItemSO> current = lista.Root; // primer nodo
@@ -192,6 +194,8 @@ public class StoreManager : MonoBehaviour
 
     public void SortStoreByID() { SortStore(SortOption.ID); }
     public void SortStoreByName() { SortStore(SortOption.Name); }
-    public void SortStoreByPrice() { SortStore(SortOption.Price); }
+    public void SortStoreByLowerPrice() { SortStore(SortOption.LowerPrice); }
+
+    public void SortStoreByGreatestPrice() { SortStore(SortOption.GreatestPrice);  }
 }
 

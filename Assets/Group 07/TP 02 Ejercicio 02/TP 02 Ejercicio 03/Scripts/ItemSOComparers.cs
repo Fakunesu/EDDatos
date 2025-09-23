@@ -15,8 +15,13 @@ public class ItemSOComparers : MonoBehaviour
         return string.Compare(a.ItemName, b.ItemName, StringComparison.OrdinalIgnoreCase);
     }
 
-    public static int ByPrice(ItemSO a, ItemSO b)
+    public static int ByLowerPrice(ItemSO a, ItemSO b)
     {
         return a.Price.CompareTo(b.Price);
+    }
+
+    public static int ByGreatestPrice(ItemSO a, ItemSO b)
+    {
+        return b.Price.CompareTo(a.Price);
     }
 }

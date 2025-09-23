@@ -10,7 +10,8 @@ public class SortOptions : MonoBehaviour
         {
             ID,
             Name,
-            Price
+            LowerPrice,
+            GratestPrice
         }
     }
 }

@@ -145,7 +145,8 @@ public class PlayerInventory : MonoBehaviour
 
         Comparison<ItemSO> comp = ItemSOComparers.ByID;
         if (option == SortOption.Name) comp = ItemSOComparers.ByName;
-        else if (option == SortOption.Price) comp = ItemSOComparers.ByPrice;
+        else if (option == SortOption.LowerPrice) comp = ItemSOComparers.ByLowerPrice;
+        else if (option == SortOption.GreatestPrice) comp = ItemSOComparers.ByGreatestPrice;
 
         lista.SelectionSort(comp);
 
