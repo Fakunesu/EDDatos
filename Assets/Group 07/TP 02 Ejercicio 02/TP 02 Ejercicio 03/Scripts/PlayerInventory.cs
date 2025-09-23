@@ -10,7 +10,6 @@ public class PlayerInventory : MonoBehaviour
 {
     private DataBaseSO data;
     [SerializeField] private StoreManager storeManager;
-    public int dineroJugador {private set; get; }
 
     [Header("Panel")]
     [SerializeField] private Transform itemContainer;
@@ -22,9 +21,10 @@ public class PlayerInventory : MonoBehaviour
     [Header("Money")]
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private int dineroInicial = 10000;
+    public int dineroJugador {private set; get; }
 
-    private Dictionary<int, int> items = new Dictionary<int, int>();
-    private Dictionary<int, GameObject> itemButton = new Dictionary<int, GameObject>();
+    private Dictionary<int, int> items = new Dictionary<int, int>();// id(key), cantidad(value)
+    private Dictionary<int, GameObject> itemButton = new Dictionary<int, GameObject>();//id(key), prefab/item
 
     public int CantidadItems => items.Count;
 
@@ -53,10 +53,6 @@ public class PlayerInventory : MonoBehaviour
             {
                 storeManager.AgregarItem(item);
                 Debug.Log($"Vendiste: {item.ItemName}");
-            }
-            else 
-            {
-                
             }
         }
     }
@@ -151,7 +147,7 @@ public class PlayerInventory : MonoBehaviour
         lista.SelectionSort(comp);
 
         int i = 0;
-        MyNode<ItemSO> current = lista.node;
+        MyNode<ItemSO> current = lista.Root;
         while (current != null)
         {
             ItemSO item = current.Value;

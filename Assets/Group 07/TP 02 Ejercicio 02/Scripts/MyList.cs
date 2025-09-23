@@ -292,6 +292,8 @@ public class MyList<T>
         }
     }
 
+
+
   //    public void SelectionSort(Comparison<T> comparison)
   //    {
   //        for (int i = 0; i < Count - 1; i++)
@@ -327,6 +329,7 @@ public class MyList<T>
   //        }
   //    }
 
+ 
     public void SelectionSort(Comparison<T> comparison)
     {
         if (count < 2 || comparison == null)

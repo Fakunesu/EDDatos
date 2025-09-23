@@ -48,7 +48,7 @@ public class StoreManager : MonoBehaviour
             // Texto
             var texto = boton.GetComponentInChildren<TextMeshProUGUI>(true);
             items.TryGetValue(item.ID, out int amount);
-            if (texto != null) texto.text = $"{item.ItemName} \n x{items[item.ID]} \n -${item.Price}";
+            if (texto != null) texto.text = $"{item.ItemName} - x{items[item.ID]} \n -${item.Price}";
 
             // Imagen (en root o en un hijo)
             var icon = boton.transform.Find("icon").GetComponent<Image>();
@@ -101,7 +101,7 @@ public class StoreManager : MonoBehaviour
             items.Add(item.ID, 1);
             GameObject boton = Instantiate(itemButtonPrefab, itemContainer);
             var texto = boton.GetComponentInChildren<TextMeshProUGUI>(true);
-            if (texto != null) texto.text = $"{item.ItemName} \n x{items[item.ID]} \n -${item.Price}";
+            if (texto != null) texto.text = $"{item.ItemName} - x{items[item.ID]} \n -${item.Price}";
 
             var icon = boton.transform.Find("icon").GetComponent<Image>();
             if (icon != null)
@@ -189,7 +189,7 @@ public class StoreManager : MonoBehaviour
     void ActualizarTextoUI(ItemSO item)
     {
             var texto = itemButton[item.ID].GetComponentInChildren<TextMeshProUGUI>(true);
-            if (texto != null) texto.text = $"{item.ItemName} \n x{items[item.ID]} \n -${item.Price}"; 
+            if (texto != null) texto.text = $"{item.ItemName} - x{items[item.ID]} \n -${item.Price}"; 
     }
 
     public void SortStoreByID() { SortStore(SortOption.ID); }
