@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: SR M1903
   <Sprite>k__BackingField: {fileID: -4283748611110625176, guid: 7a692af7dfba55646842d83c42bf0c83, type: 3}
-  <Price>k__BackingField: 3750
+  <Price>k__BackingField: 3500
   <SellPrice>k__BackingField: 2750
   <Type>k__BackingField: Weapon
