@@ -1,38 +1,31 @@
-using BTNode;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEngine.Rendering.DebugUI;
-
-
+using BTNode;
 
 public class ABB_Tree<T> where T : IComparable<T>
 {
     private BTNode<T> root;
-    private int heigth=0;
+    private int heigth = 0;
+
+    public BTNode<T> Root => root;
 
     public void Insert(T value)
     {
         root = RecursiveInsert(root, value, (a, b) => a.CompareTo(b));
     }
-  
+
     public BTNode<T> RecursiveInsert(BTNode<T> current, T value, Comparison<T> comparison)
-    { 
+    {
         BTNode<T> nodeIndex = new BTNode<T>(value);
-  
+
         if (current == null)
         {
             return new BTNode<T>(value);
         }
         else
         {
-            if (comparison (value, current.data)>0)
+            if (comparison(value, current.data) > 0)
             {
-                current.left= RecursiveInsert(current.left, value, comparison);
+                current.left = RecursiveInsert(current.left, value, comparison);
             }
             else if (comparison(value, current.data) < 0)
             {
@@ -97,55 +90,55 @@ public class ABB_Tree<T> where T : IComparable<T>
 
     private BTNode<T> Find(BTNode<T> current, T value, Comparison<T> comparison)
     {
-        if (current == null) return null;
-        if (comparison(value, current.data) == 0) return current;
-        if (comparison(value, current.data) < 0) return Find(current.left, value, comparison);
+        if (current == null)
+            return null;
+
+        if (comparison(value, current.data) == 0)
+            return current;
+
+        if (comparison(value, current.data) < 0)
+            return Find(current.left, value, comparison);
+
         return Find(current.right, value, comparison);
     }
 
     public int GetBalanceFactor(BTNode<T> node)
     {
-
         if (node == null)
-        {
             return 0;
-
-        }
         else
-        {
             return GetHeight(node.left) - GetHeight(node.right);
-
-        }
     }
 
-    
+
     public void InOrder(BTNode<T> node)
     {
         if (node == null) return;
+
         InOrder(node.left);
-        Debug.Log(node.data);
+        node.Execute();
         InOrder(node.right);
     }
 
-    
+
     public void PreOrder(BTNode<T> node)
     {
         if (node == null) return;
-        Debug.Log(node.data);
+        node.Execute();
         PreOrder(node.left);
         PreOrder(node.right);
     }
 
-    
+
     public void PostOrder(BTNode<T> node)
     {
         if (node == null) return;
         PostOrder(node.left);
         PostOrder(node.right);
-        Debug.Log(node.data);
+        node.Execute();
     }
 
-   
+
     public void LevelOrder()
     {
         if (root == null) return;
@@ -156,13 +149,12 @@ public class ABB_Tree<T> where T : IComparable<T>
         while (queue.count > 0)
         {
             BTNode<T> current = queue.Dequeue();
-            Debug.Log(current.data);
+            current.Execute();
 
-            if (current.left != null) queue.Enqueue(current.left);
-            if (current.right != null) queue.Enqueue(current.right);
+            if (current.left != null)
+                queue.Enqueue(current.left);
+            if (current.right != null)
+                queue.Enqueue(current.right);
         }
     }
 }
-
-
-

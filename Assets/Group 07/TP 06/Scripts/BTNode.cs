@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace BTNode
 {
     public class BTNode<T>
@@ -15,6 +11,11 @@ namespace BTNode
             this.data = data;
             left = null;
             right = null;
+        }
+
+        public virtual void Execute()
+        {
+            UnityEngine.Debug.Log(data);
         }
     }
 }
