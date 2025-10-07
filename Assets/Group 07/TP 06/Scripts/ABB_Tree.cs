@@ -22,7 +22,7 @@ public class ABB_Tree<T> where T : IComparable<T>
   
     public BTNode<T> RecursiveInsert(BTNode<T> current, T value, Comparison<T> comparison)
     { 
-        BTNode<T> node = new BTNode<T>(value);
+        BTNode<T> nodeIndex = new BTNode<T>(value);
   
         if (current == null)
         {
@@ -30,57 +30,137 @@ public class ABB_Tree<T> where T : IComparable<T>
         }
         else
         {
-            if (comparison (current.data, value)>0)
+            if (comparison (value, current.data)>0)
             {
                 current.left= RecursiveInsert(current.left, value, comparison);
             }
-            else if (comparison(current.data, value) < 0)
+            else if (comparison(value, current.data) < 0)
             {
                 current.right = RecursiveInsert(current.right, value, comparison);
             }
         }
         return current;
-    } 
+    }
 
-    public int GetHeight(T value, BTNode<T> current, Comparison<T> comparison)
+    //  public int GetHeight(T value, BTNode<T> current, Comparison<T> comparison)
+    //  {
+    //
+    //      if (current == null)
+    //      {
+    //          heigth = 0;
+    //          return 0;
+    //      }
+    //      else
+    //      {
+    //          if (comparison(current.data, value) == 0)
+    //          {
+    //              heigth++;
+    //              Debug.Log(heigth);
+    //              return heigth;
+    //          }
+    //          else if (comparison(current.data, value) > 0)
+    //          {
+    //              heigth++;
+    //              return GetHeight(value, current.left, comparison);
+    //          }
+    //          else if (comparison(current.data, value) < 0)
+    //          {
+    //              heigth++;
+    //              return GetHeight(value, current.right, comparison);
+    //          }
+    //          else
+    //          {
+    //               throw new System.IndexOutOfRangeException();
+    //          
+    //          }
+    //
+    //      }
+    //
+    //  }
+
+    public int GetHeight(BTNode<T> node)
+    {
+        if (node == null)
+            return 0;
+
+        int leftHeight = GetHeight(node.left);
+        int rightHeight = GetHeight(node.right);
+
+        return Math.Max(leftHeight, rightHeight) + 1;
+    }
+
+    public int GetNode(T value)
+    {
+        var node = Find(root, value, (a, b) => a.CompareTo(b));
+        return GetHeight(node);
+    }
+
+    private BTNode<T> Find(BTNode<T> current, T value, Comparison<T> comparison)
+    {
+        if (current == null) return null;
+        if (comparison(value, current.data) == 0) return current;
+        if (comparison(value, current.data) < 0) return Find(current.left, value, comparison);
+        return Find(current.right, value, comparison);
+    }
+
+    public int GetBalanceFactor(BTNode<T> node)
     {
 
-        if (current == null)
+        if (node == null)
         {
-            heigth = 0;
             return 0;
+
         }
         else
         {
-            if (comparison(current.data, value) == 0)
-            {
-                heigth++;
-                Debug.Log(heigth);
-                return heigth;
-            }
-            else if (comparison(current.data, value) > 0)
-            {
-                heigth++;
-                return GetHeight(value, current.left, comparison);
-            }
-            else if (comparison(current.data, value) < 0)
-            {
-                heigth++;
-                return GetHeight(value, current.right, comparison);
-            }
-            else
-            {
-                 throw new System.IndexOutOfRangeException();
-            
-            }
+            return GetHeight(node.left) - GetHeight(node.right);
 
         }
-
     }
 
-    public void GetBalanceFactor()
+    
+    public void InOrder(BTNode<T> node)
     {
-        
+        if (node == null) return;
+        InOrder(node.left);
+        Debug.Log(node.data);
+        InOrder(node.right);
+    }
+
+    
+    public void PreOrder(BTNode<T> node)
+    {
+        if (node == null) return;
+        Debug.Log(node.data);
+        PreOrder(node.left);
+        PreOrder(node.right);
+    }
+
+    
+    public void PostOrder(BTNode<T> node)
+    {
+        if (node == null) return;
+        PostOrder(node.left);
+        PostOrder(node.right);
+        Debug.Log(node.data);
+    }
+
+   
+    public void LevelOrder()
+    {
+        if (root == null) return;
+
+        MyQueue<BTNode<T>> queue = new MyQueue<BTNode<T>>();
+        queue.Enqueue(root);
+
+        while (queue.count > 0)
+        {
+            BTNode<T> current = queue.Dequeue();
+            Debug.Log(current.data);
+
+            if (current.left != null) queue.Enqueue(current.left);
+            if (current.right != null) queue.Enqueue(current.right);
+        }
     }
 }
 
