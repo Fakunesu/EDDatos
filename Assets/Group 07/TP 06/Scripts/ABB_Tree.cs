@@ -1,5 +1,4 @@
 using System;
-using BTNode;
 
 public class ABB_Tree<T> where T : IComparable<T>
 {
@@ -23,11 +22,11 @@ public class ABB_Tree<T> where T : IComparable<T>
         }
         else
         {
-            if (comparison(value, current.data) > 0)
+            if (comparison(value, current.data) < 0)
             {
                 current.left = RecursiveInsert(current.left, value, comparison);
             }
-            else if (comparison(value, current.data) < 0)
+            else if (comparison(value, current.data) > 0)
             {
                 current.right = RecursiveInsert(current.right, value, comparison);
             }

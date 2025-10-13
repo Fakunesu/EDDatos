@@ -1,5 +1,4 @@
-namespace BTNode
-{
+
     public class BTNode<T>
     {
         public T data;
@@ -18,4 +17,3 @@ namespace BTNode
             UnityEngine.Debug.Log(data);
         }
     }
-}

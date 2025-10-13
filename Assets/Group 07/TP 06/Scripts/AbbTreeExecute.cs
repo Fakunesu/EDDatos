@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -5,46 +7,88 @@ public class AbbTreeExecute : MonoBehaviour
 {
     private ABB_Tree<int> tree;
     private int[] numbers = { 50, 40, 60, 39, 41, 59, 61 };
-    [SerializeField] private NodeVisual prefabNode;
-    MyList<NodeVisual> nodes = new MyList<NodeVisual>();
+    [SerializeField] private GameObject prefabNode;
+    public Vector2 startPosition;
+    public float spaceX = 2.5f;
+    public float spaceY = -2f;
+    [SerializeField]TMP_InputField inputField;
+    [SerializeField] TMP_Text outputText;
+    private MyList<GameObject> nodeList= new MyList<GameObject>();
+
 
     void Start()
     {
+        startPosition = transform.position;
         // Input
         tree = new ABB_Tree<int>();
         for (int i = 0; i < numbers.Length; i++) 
             tree.Insert(numbers[i]);
-
+            
 
         // Draw
-        CreateNode(tree.Root);
+        DrawTree(tree.Root, startPosition, 0);
 
 
         // Draw Lines
 
     }
 
-    void CreateNode(BTNode.BTNode<int> node)
+
+    void DrawTree(BTNode<int> node, Vector2 position, int depth)
     {
-        NodeVisual current = Instantiate(prefabNode);
-        nodes.Add(current);
-        
-        bool hasLeft = node.left != null;
-        bool hasRight = node.right != null;
-
-     
-        current.SetNode(node.ToString(), hasLeft, hasRight);
+        if (node == null) return;
 
 
-
-        int height=tree.GetHeight(node);
-        
-        // Setear Y en base al Nivel
-        // Setear X en base a -1 -1 o 1 -1
+        GameObject newNode = Instantiate(prefabNode, position, Quaternion.identity);
+        nodeList.Add(newNode);
+        newNode.GetComponentInChildren<TextMeshProUGUI>().text = node.data.ToString();
 
         if (node.left != null)
-            CreateNode(node.left);
+            DrawTree(node.left, position + new Vector2(-spaceX / (depth + 1), spaceY), depth + 1);
+
         if (node.right != null)
-            CreateNode(node.right);
+            DrawTree(node.right, position + new Vector2(spaceX / (depth + 1), spaceY), depth + 1);
     }
+
+    public void ClearTree()
+    {
+        tree = new ABB_Tree<int>();
+        for(int i=0; i<nodeList.Count; i++)
+        {
+            Destroy(nodeList[i].gameObject);
+        }
+            nodeList.Clear();
+    }
+
+    private void UpdateTree()
+    {
+        for (int i = 0; i < nodeList.Count; i++)
+        {
+            Destroy(nodeList[i].gameObject);
+        }
+        nodeList.Clear();
+    }
+
+    public void InputNewNode()
+    {
+        string stringNode = inputField.text;
+        int nodeNumber;
+        
+        if (int.TryParse(stringNode, out nodeNumber))
+        {
+            
+            tree.Insert(nodeNumber);
+            UpdateTree();
+            DrawTree(tree.Root, startPosition, 0);
+            outputText.text = "";
+        }
+        else
+        {
+            outputText.text = "Ingrese un numero valido porfavor";
+        }
+        
+       
+    }
+
+
 }
