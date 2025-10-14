@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,33 +37,53 @@ public class AVL_Tree<T> : ABB_Tree<T> where T : IComparable<T>
         //Izquierda-Izquierda
         if (balance > 1 && value.CompareTo(node.left.data) < 0)
         {
-            return RotateRight(node);
+            //return RotateRight(node);
         }
 
         //Derecha-Derecha
         if (balance < -1 && value.CompareTo(node.right.data) > 0)
         {
-           return RotateLeft(node);
+           //return RotateLeft(node);
         }
 
         //Izquierda-Derecha
         if (balance > 1 && value.CompareTo(node.left.data) > 0)
         {
             node.left = RotateLeft(node.left);
-            return RotateRight(node);
+            //return RotateRight(node);
         }
 
         //Derecha-Izquierda
         if (balance < -1 && value.CompareTo(node.right.data) < 0)
         {
             node.right = RotateRight(node.right);
-            return RotateLeft(node);
+            //return RotateLeft(node);
         }
 
         return node;
     }
 
+    private BTNode<T> RotateRightRight(BTNode<T> x)
+    {
+        BTNode<T> y = x.left;
+        BTNode<T> z = y.left;
 
+        y.right = x;
+        x.left = null;
+
+        return y;
+    }
+
+    private BTNode<T> RotateLeftLeft(BTNode<T> x)
+    {
+        BTNode<T> y= x.right;
+        BTNode <T> z = y.right;
+
+        y.left = x;
+        x.right = null;
+
+        return y;
+    }
     private BTNode<T> RotateRight(BTNode<T> x)
     {
         BTNode<T> y = x.left;

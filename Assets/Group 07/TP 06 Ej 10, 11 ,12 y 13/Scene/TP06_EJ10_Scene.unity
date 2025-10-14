@@ -536,11 +536,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabNode: {fileID: 6341431058516936286, guid: 2a09787b1bfa99341b61d6a9e059a349, type: 3}
-  startPosition: {x: 0, y: 6}
-  spaceX: 2.5
-  spaceY: -2
+  startPosition: {x: 0, y: 0}
+  spaceX: 0
+  spaceY: -1.5
+  multiply: 0.2
   inputField: {fileID: 516122809}
   outputText: {fileID: 592251359}
+  horizontalMove: 0
 --- !u!1 &485884615
 GameObject:
   m_ObjectHideFlags: 0
