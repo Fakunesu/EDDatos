@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class AbbTreeExecute : MonoBehaviour
 {
     private ABB_Tree<int> tree;
-    private int[] numbers = { 50, 40, 60, 39, 41, 59, 61 };
+    private int[] numbers = { 20, 10, 1, 26, 35, 40, 18, 12, 15, 14, 30, 23 };
     [SerializeField] private GameObject prefabNode;
     public Vector2 startPosition;
     public float spaceX = 2.5f;

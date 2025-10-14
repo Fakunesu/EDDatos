@@ -2,7 +2,7 @@ using System;
 
 public class ABB_Tree<T> where T : IComparable<T>
 {
-    private BTNode<T> root;
+    protected BTNode<T> root;
     private int heigth = 0;
 
     public BTNode<T> Root => root;
@@ -87,7 +87,7 @@ public class ABB_Tree<T> where T : IComparable<T>
         return GetHeight(node);
     }
 
-    private BTNode<T> Find(BTNode<T> current, T value, Comparison<T> comparison)
+    public BTNode<T> Find(BTNode<T> current, T value, Comparison<T> comparison)
     {
         if (current == null)
             return null;
