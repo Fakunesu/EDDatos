@@ -69,7 +69,7 @@ public class SetsManager : MonoBehaviour
 
     void notUsed()
     {
-        ItemSets[] result = items.Difference(UnionInventories()).Elements();
+        ItemSets[] result = items.Difference(UnionInventories()).Elements;
         
         for (int i = 0; result.Length > 0; i++)
         {
