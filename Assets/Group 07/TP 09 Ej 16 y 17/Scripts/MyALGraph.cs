@@ -2,20 +2,20 @@ using System.Collections.Generic;
 
 public class MyALGraph<T>
 {
-    private Dictionary<T, List<(T, int)>> adList;
+    private Dictionary<T, List<(T, float)>> adList;
 
     public IEnumerable<T> Vertices { get => adList.Keys; }
 
     public MyALGraph()
     {
-        adList = new Dictionary<T, List<(T, int)>>();
+        adList = new Dictionary<T, List<(T, float)>>();
     }
 
     public void AddVertex(T vertex)
     {
         if (!adList.ContainsKey(vertex))
         {
-            adList[vertex] = new List<(T, int)>();
+            adList[vertex] = new List<(T, float)>();
         }
     }
     public void RemoveVertex(T vertex)
@@ -38,7 +38,7 @@ public class MyALGraph<T>
 
     }
 
-    public void AddEdge(T from, (T, int) edge)
+    public void AddEdge(T from, (T, float) edge)
     {
         if (adList.TryGetValue(from, out var list))
         {
@@ -85,16 +85,15 @@ public class MyALGraph<T>
         return false;
     }
 
-    public int? GetWeight(T from, T to)
+    public float? GetWeight(T from, T to)
     {
         if (adList.TryGetValue(from, out var edges))
         {
-            for (int i = 0; i < edges.Count; i++)
-            {
-                if (edges[i].Item1.Equals(to)) return edges[i].Item2;
-            }
-            return null;
+            foreach (var e in edges)
+                if (e.Item1.Equals(to))
+                    return e.Item2;
         }
         return null;
     }
 }
+    

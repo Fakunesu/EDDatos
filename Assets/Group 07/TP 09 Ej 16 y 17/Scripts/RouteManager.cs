@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class RouteManager : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class RouteManager : MonoBehaviour
         // MyALGraph
         foreach (Planet planet in allPlanets)
         {
-            foreach(Planet planet2 in planet.conn)
+            MyALGraph.AddVertex(planet);
+            foreach(Planet planet2 in planet.Conn)
             {
-
+                float distance = Vector3.Distance(planet.transform.position, planet2.transform.position);
+                MyALGraph.AddEdge(planet, (planet2, distance));
             }
         }
     }
@@ -40,5 +43,55 @@ public class RouteManager : MonoBehaviour
             clickedPlanets.Remove(planet);
         else
             clickedPlanets.Add(planet);
+    }
+
+    public float? GetRoute(Planet from, Planet to)
+    {
+        return MyALGraph.GetWeight(from, to);
+    }
+
+    public float? GetRoute(string fromName, string toName)
+    {
+        Planet from = allPlanets.Find(p => p.PlanetName == fromName);
+        Planet to = allPlanets.Find(p => p.PlanetName == toName);
+        return GetRoute(from, to);
+    }
+
+    public void CheckRoute()
+    {
+        // Si no hay suficientes planetas seleccionados, no tiene sentido calcular
+        if (clickedPlanets.Count < 2)
+        {
+            outputRouteText.text = "Seleccioná al menos dos planetas.";
+            return;
+        }
+
+        float totalCost = 0f;
+        bool validRoute = true;
+
+        // Recorre cada par consecutivo de planetas seleccionados
+        for (int i = 0; i < clickedPlanets.Count - 1; i++)
+        {
+            Planet from = clickedPlanets[i];
+            Planet to = clickedPlanets[i + 1];
+
+            float? cost = MyALGraph.GetWeight(from, to);
+
+            if (cost == null)
+            {
+                validRoute = false;
+                outputRouteText.text = $"No hay conexión entre {from.PlanetName} y {to.PlanetName}.";
+                break;
+            }
+
+            totalCost += cost.Value;
+        }
+
+        // Mostrar resultado final
+        if (validRoute)
+            outputRouteText.text = $"Ruta válida.\nCosto total: {totalCost:F2}";
+
+        // Limpiar selección para empezar de nuevo
+        clickedPlanets.Clear();
     }
 }

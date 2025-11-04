@@ -7,13 +7,17 @@ public class Planet : MonoBehaviour
 {
     public static event Action<Planet> OnPlanetClick;
 
-    public List<Planet> conn { get; protected set; }
+    [Header("Planetas conectados:")]
+    [SerializeField] private List<Planet> conn=new List<Planet>();
+    public List<Planet> Conn => conn;
     private Button button;
 
     public string PlanetName => gameObject.name;
 
     private void Awake()
     {
+        if (conn == null)
+            conn = new List<Planet>();
         button = GetComponent<Button>();
         button.onClick.AddListener(PlanetButtonFunction);
     }
