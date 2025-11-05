@@ -59,7 +59,7 @@ public class RouteManager : MonoBehaviour
 
     public void CheckRoute()
     {
-        // Si no hay suficientes planetas seleccionados, no tiene sentido calcular
+        
         if (clickedPlanets.Count < 2)
         {
             outputRouteText.text = "Seleccioná al menos dos planetas.";
@@ -69,7 +69,7 @@ public class RouteManager : MonoBehaviour
         float totalCost = 0f;
         bool validRoute = true;
 
-        // Recorre cada par consecutivo de planetas seleccionados
+        
         for (int i = 0; i < clickedPlanets.Count - 1; i++)
         {
             Planet from = clickedPlanets[i];
@@ -87,11 +87,11 @@ public class RouteManager : MonoBehaviour
             totalCost += cost.Value;
         }
 
-        // Mostrar resultado final
+        
         if (validRoute)
             outputRouteText.text = $"Ruta válida.\nCosto total: {totalCost:F2}";
 
-        // Limpiar selección para empezar de nuevo
+        
         clickedPlanets.Clear();
     }
 }

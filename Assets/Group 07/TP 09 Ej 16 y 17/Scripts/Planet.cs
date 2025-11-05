@@ -11,9 +11,7 @@ public class Planet : MonoBehaviour
     [SerializeField] private List<Planet> conn=new List<Planet>();
     public List<Planet> Conn => conn;
     private Button button;
-
     public string PlanetName => gameObject.name;
-
     private void Awake()
     {
         if (conn == null)
@@ -21,11 +19,9 @@ public class Planet : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(PlanetButtonFunction);
     }
-
     private void OnDestroy()
     {
         button.onClick.RemoveAllListeners();
     }
-
     public void PlanetButtonFunction() => OnPlanetClick?.Invoke(this);
 }
