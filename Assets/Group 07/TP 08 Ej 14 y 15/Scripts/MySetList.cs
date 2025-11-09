@@ -2,6 +2,10 @@ public class MySetList<T> : MySet<T>
 {
     private MyList<T> list;
 
+    public MySetList()
+    {
+        list = new MyList<T>();
+    }
     public override T[] Elements
     {
         get

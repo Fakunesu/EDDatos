@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 
-public class ItemSets : MonoBehaviour
+public class ItemSets
 {
     public string name;
     public int price;

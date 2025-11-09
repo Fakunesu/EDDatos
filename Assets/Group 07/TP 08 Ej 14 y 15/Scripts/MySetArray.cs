@@ -7,6 +7,10 @@ public class MySetArray<T> : MySet<T>
 {
     public SimpleList<T> array;
 
+    public MySetArray()
+    {
+        array = new SimpleList<T>();
+    }
     public override T[] Elements
     {
         get
