@@ -20,7 +20,6 @@ public class RouteManager : MonoBehaviour
 
     private void Start()
     {
-        // MyALGraph
         foreach (Planet planet in allPlanets)
         {
             MyALGraph.AddVertex(planet);

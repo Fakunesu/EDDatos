@@ -62,6 +62,7 @@ public class AVL_Tree<T> : ABB_Tree<T> where T : IComparable<T>
 
         return node;
     }
+
     private BTNode<T> RotateRight(BTNode<T> y)
     {
         BTNode<T> x = y.left;

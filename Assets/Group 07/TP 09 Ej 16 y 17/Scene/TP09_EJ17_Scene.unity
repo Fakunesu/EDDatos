@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: 'conn.Array.data[2]'
       value: 
       objectReference: {fileID: 1599524177}
+    - target: {fileID: 1702168478805344832, guid: 420494e5424256842ad8668576842fb2, type: 3}
+      propertyPath: 'conn.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1258305049}
     - target: {fileID: 1857110325120770308, guid: 420494e5424256842ad8668576842fb2, type: 3}
       propertyPath: m_Sprite
       value: 
