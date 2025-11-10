@@ -11,6 +11,11 @@ public class ABB_Tree<T> where T : IComparable<T>
     {
         return GetHeight(root);
     }
+
+    public int CountNodes()
+    {
+        return CountNodes(root);
+    }
     public void Insert(T value)
     {
         root = RecursiveInsert(root, value, (a, b) => a.CompareTo(b));
@@ -159,5 +164,25 @@ public class ABB_Tree<T> where T : IComparable<T>
             if (current.right != null)
                 queue.Enqueue(current.right);
         }
+    }
+
+    private int CountNodes(BTNode<T> node)
+    {
+        if (node == null) return 0;
+        return 1 + CountNodes(node.left) + CountNodes(node.right);
+    }
+
+    public void InOrderWithDepth(Action<BTNode<T>, int> visit)
+    {
+        InOrderWithDepth(root, 0, visit);
+    }
+
+    private void InOrderWithDepth(BTNode<T> node, int depth, Action<BTNode<T>, int> visit)
+    {
+        if (node == null) return;
+
+        InOrderWithDepth(node.left, depth + 1, visit);
+        visit(node, depth);
+        InOrderWithDepth(node.right, depth + 1, visit);
     }
 }

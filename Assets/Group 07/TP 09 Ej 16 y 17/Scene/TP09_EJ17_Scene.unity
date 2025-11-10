@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1702168478805344832, guid: 420494e5424256842ad8668576842fb2, type: 3}
       propertyPath: conn.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1702168478805344832, guid: 420494e5424256842ad8668576842fb2, type: 3}
       propertyPath: 'conn.Array.data[0]'
@@ -300,6 +300,10 @@ PrefabInstance:
       propertyPath: 'conn.Array.data[1]'
       value: 
       objectReference: {fileID: 8554521}
+    - target: {fileID: 1702168478805344832, guid: 420494e5424256842ad8668576842fb2, type: 3}
+      propertyPath: 'conn.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1599524177}
     - target: {fileID: 1857110325120770308, guid: 420494e5424256842ad8668576842fb2, type: 3}
       propertyPath: m_Sprite
       value: 
