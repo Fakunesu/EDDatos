@@ -7,6 +7,10 @@ public class ABB_Tree<T> where T : IComparable<T>
 
     public BTNode<T> Root => root;
 
+    public int GetTreeHeight()
+    {
+        return GetHeight(root);
+    }
     public void Insert(T value)
     {
         root = RecursiveInsert(root, value, (a, b) => a.CompareTo(b));

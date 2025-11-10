@@ -2701,9 +2701,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Aclaraci\xF3n: Al los edges estar hechos en base a la distancia tanto
-    el ir de un pais \"A\" a \"B\" o de \"B\" a \"A\" el peso es el mismo, por lo
-    que nos parecio que poner dos flechas era innecesario."
+  m_text: "Aclaraci\xF3n: Como las aristas estan hechas en base a la distancia, tanto
+    el ir de un planeta \"A\" a \"B\" como ir de \"B\" a \"A\" el peso es el mismo,
+    por lo que nos parecio que poner dos flechas era innecesario."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

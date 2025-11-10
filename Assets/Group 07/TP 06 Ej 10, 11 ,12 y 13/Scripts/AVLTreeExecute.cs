@@ -174,6 +174,8 @@ public class TP13_AVL_TraversalsUI : MonoBehaviour
         scoreBoardCounter = 0;
         if (scoreboardText != null)
             scoreboardText.text = "";
+        
+        
     }
 
     public void ScoreBoardAddTree()
@@ -186,11 +188,13 @@ public class TP13_AVL_TraversalsUI : MonoBehaviour
             return;
 
         // Opcional: si ya hay cosas, separador
-        if (!string.IsNullOrEmpty(scoreboardText.text))
+        if (current!=null)
         {
+            Debug.Log("funca");
             scoreBoardCounter++;
             scoreboardText.text += $" Arbol Nº{scoreBoardCounter}: {current}";
             scoreboardText.text += "\n";
+
         }
 
     }

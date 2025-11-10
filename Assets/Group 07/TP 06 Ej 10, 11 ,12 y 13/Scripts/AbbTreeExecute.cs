@@ -81,6 +81,7 @@ public class AbbTreeExecute : MonoBehaviour
             Destroy(nodeList[i].gameObject);
         }
             nodeList.Clear();
+        outputText.text = "";
     }
 
     private void UpdateTree()
