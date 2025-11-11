@@ -11,7 +11,11 @@ public enum States
     Ej3,
     Ej4,
     Ej5,
-    Ej6
+    Ej6,
+    Ej11,
+    Ej13,
+    Ej15,
+    Ej17
 }
 public class WindowsManager : MonoBehaviour
 {
@@ -145,6 +149,80 @@ public class WindowsManager : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
+                    currentState = States.Ej11;
+                    SceneManager.LoadScene("TP06_EJ11_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    currentState = States.MainMenu;
+                    SceneManager.LoadScene("MainMenu");
+                }
+                break;
+
+            case States.Ej11:
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    currentState = States.Ej6;
+                    SceneManager.LoadScene("TP05_EJ06_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    currentState = States.Ej13;
+                    SceneManager.LoadScene("TP07_EJ13_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    currentState = States.MainMenu;
+                    SceneManager.LoadScene("MainMenu");
+                }
+                break;
+
+            case States.Ej13:
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    currentState = States.Ej11;
+                    SceneManager.LoadScene("TP06_EJ11_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    currentState = States.Ej15;
+                    SceneManager.LoadScene("TP08_EJ15_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    currentState = States.MainMenu;
+                    SceneManager.LoadScene("MainMenu");
+                }
+                break;
+
+            case States.Ej15:
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    currentState = States.Ej13;
+                    SceneManager.LoadScene("TP07_EJ13_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    currentState = States.Ej17;
+                    SceneManager.LoadScene("TP09_EJ17_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    currentState = States.MainMenu;
+                    SceneManager.LoadScene("MainMenu");
+                }
+                break;
+
+            case States.Ej17:
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    currentState = States.Ej15;
+                    SceneManager.LoadScene("TP08_EJ15_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                   // currentState = States.Ej17;
+                   // SceneManager.LoadScene("TP09_EJ17_Scene");
                 }
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
@@ -153,13 +231,9 @@ public class WindowsManager : MonoBehaviour
                 }
                 break;
         }
+    }
     
 
 
 }
 
-    private void CambioDeEscena()
-    {
-
-    }
-}

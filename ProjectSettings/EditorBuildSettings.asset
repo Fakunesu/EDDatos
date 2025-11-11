@@ -29,5 +29,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Group 07/TP 05/Scenes/Prueba_Factorial.unity
     guid: c672babd7ce32484caa58e5922e5b1b7
+  - enabled: 1
+    path: Assets/Group 07/TP 06 Ej 10, 11 ,12 y 13/Scene/TP06_EJ11_Scene.unity
+    guid: 71a39cb9c14c2f449b8ebfae466bc0e4
+  - enabled: 1
+    path: Assets/Group 07/TP 06 Ej 10, 11 ,12 y 13/Scene/TP07_EJ13_Scene.unity
+    guid: 4d5c569a696ac2e4eb38f6814a55e44f
+  - enabled: 1
+    path: Assets/Group 07/TP 08 Ej 14 y 15/Scene/TP08_EJ15_Scene.unity
+    guid: 729a30a26ea190341977a7ae0d7d4800
+  - enabled: 1
+    path: Assets/Group 07/TP 09 Ej 16 y 17/Scene/TP09_EJ17_Scene.unity
+    guid: 6598345e8c4563e4fbe25c3363b2b766
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
