@@ -95,5 +95,13 @@ public class MyALGraph<T>
         }
         return null;
     }
+
+    public List<(T, float)> GetAdjacents(T from)
+    {
+        if (adList.TryGetValue(from, out var list))
+            return list;
+
+        return new List<(T, float)>();
+    }
 }
     

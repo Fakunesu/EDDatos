@@ -15,7 +15,8 @@ public enum States
     Ej11,
     Ej13,
     Ej15,
-    Ej17
+    Ej17,
+    Ej18
 }
 public class WindowsManager : MonoBehaviour
 {
@@ -221,8 +222,26 @@ public class WindowsManager : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                   // currentState = States.Ej17;
-                   // SceneManager.LoadScene("TP09_EJ17_Scene");
+                   currentState = States.Ej18;
+                   SceneManager.LoadScene("TP10_EJ18_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    currentState = States.MainMenu;
+                    SceneManager.LoadScene("MainMenu");
+                }
+                break;
+
+            case States.Ej18:
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    currentState = States.Ej15;
+                    SceneManager.LoadScene("TP09_EJ17_Scene");
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                   // currentState = States.Ej18;
+                   // SceneManager.LoadScene("TP10_EJ18_Scene");
                 }
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {

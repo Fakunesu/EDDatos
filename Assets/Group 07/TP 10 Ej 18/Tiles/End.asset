@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd6cd5b7706d5124da69715f03d987e1, type: 3}
-  m_Name: Kamino
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: End
   m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: -2509528041151090863, guid: 48b7f9c8598ed98428a064c967011144, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules: []

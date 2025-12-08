@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Group 07/TP 02 Ejercicio 02/Scene/TP02_EJ02_Scene.unity
-    guid: 4c8fc67f8c73ae042ad4e7cf1ca2c7fa
+    guid: 0345bedcd5321684db12d05a80a9d19f
   - enabled: 1
     path: Assets/Group 07/TP 02 Ejercicio 02/TP 02 Ejercicio 03/Scene/TP02_EJ03_Scene.unity
     guid: 7e07bb4406a7f8a4f9bc8207d5eb70a6
@@ -41,5 +41,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Group 07/TP 09 Ej 16 y 17/Scene/TP09_EJ17_Scene.unity
     guid: 6598345e8c4563e4fbe25c3363b2b766
+  - enabled: 1
+    path: Assets/Group 07/TP 10 Ej 18/Scene/TP10_EJ18_Scene.unity
+    guid: ae9122efde4941f4ca4b7dce591c980d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
