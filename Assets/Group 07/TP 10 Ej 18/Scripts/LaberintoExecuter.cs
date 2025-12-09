@@ -21,12 +21,9 @@ public class LaberintoExecuter : MonoBehaviour
     public TMP_Text outputText;
 
     [Header("Player")]
-    public PlayerMovement playerMover;
+    public PlayerMovement playerMove;
 
-    // camino calculado (en celdas)
     private List<Vector3Int> LastRoute = null;
-
-
 
     [Header("Tiles")]
     public TileBase floorTile;
@@ -35,17 +32,15 @@ public class LaberintoExecuter : MonoBehaviour
     public TileBase endTile;
 
     [Header("Tamaño del tablero")]
-    public int width = 6;   // columnas
-    public int height = 6;  // filas
-    public Vector3Int origin = Vector3Int.zero; // celda de inicio del tablero (esquina inferior izquierda)
+    public int width = 6;   
+    public int height = 6;  
+    public Vector3Int origin = Vector3Int.zero; 
 
     [Header("Estado actual")]
-    public TileType selectedType = TileType.Wall;
+    public TileType selectedType = TileType.Floor;
 
-    // Qué tipo tiene cada celda
     private Dictionary<Vector3Int, TileType> cellTypes = new Dictionary<Vector3Int, TileType>();
 
-    // Dónde está la Start y la End (solo puede haber una de cada)
     private Vector3Int? startCell = null;
     private Vector3Int? endCell = null;
 
@@ -66,10 +61,8 @@ public class LaberintoExecuter : MonoBehaviour
 
     private void Update()
     {
-        // Click izquierdo para pintar
         if (Input.GetMouseButton(0))
         {
-            // Si el puntero está sobre un elemento de UI, no pintamos
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return;
 
@@ -84,17 +77,13 @@ public class LaberintoExecuter : MonoBehaviour
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int cellPos = tilemap.WorldToCell(mouseWorldPos);
 
-        // si la celda no está dentro del tablero, no hacemos nada
         if (!IsIntoTheArea(cellPos))
             return;
 
-        // Elegimos qué tile usar según el tipo seleccionado
         TileBase tileToSet = GetTileForType(selectedType);
 
-        // Reglas especiales para Start y End (solo una de cada)
         if (selectedType == TileType.Start)
         {
-            // Si ya había una Start, la convertimos a Floor
             if (startCell.HasValue && startCell.Value != cellPos)
             {
                 tilemap.SetTile(startCell.Value, floorTile);
@@ -106,7 +95,6 @@ public class LaberintoExecuter : MonoBehaviour
         }
         else if (selectedType == TileType.End)
         {
-            // Si ya había una End, la convertimos a Floor
             if (endCell.HasValue && endCell.Value != cellPos)
             {
                 tilemap.SetTile(endCell.Value, floorTile);
@@ -117,9 +105,8 @@ public class LaberintoExecuter : MonoBehaviour
             endCell = cellPos;
         }
 
-        // Pintamos la celda con el tile correspondiente
         tilemap.SetTile(cellPos, tileToSet);
-        tilemap.SetColor(cellPos, GetColorForType(selectedType));  // <- NUEVO
+        tilemap.SetColor(cellPos, GetColorForType(selectedType)); 
         cellTypes[cellPos] = selectedType;
     }
 
@@ -145,18 +132,17 @@ public class LaberintoExecuter : MonoBehaviour
         switch (type)
         {
             case TileType.Floor:
-                return Color.white;          // suelo
+                return Color.white;         
             case TileType.Wall:
-                return Color.black;          // pared
+                return Color.black;         
             case TileType.Start:
-                return Color.blue;          // inicio
+                return Color.blue;          
             case TileType.End:
-                return Color.red;            // fin
+                return Color.red;           
             default:
                 return Color.white;
         }
     }
-    // --- Métodos para los botones ---
 
     public void SetFloorType()
     {
@@ -194,7 +180,6 @@ public class LaberintoExecuter : MonoBehaviour
             }
         }
 
-        // Al generar nuevo tablero, olvidamos start/end anteriores
         startCell = null;
         endCell = null;
     }
@@ -218,7 +203,6 @@ public class LaberintoExecuter : MonoBehaviour
             return false;
         }
 
-        // si hiciste la clase aparte GridPathfinder:
         LastRoute = PathfinderDijkstra.CalcularCamino(cellTypes, startCell, endCell);
 
         if (LastRoute == null || LastRoute.Count == 0)
@@ -234,7 +218,6 @@ public class LaberintoExecuter : MonoBehaviour
         return true;
     }
 
-    // Getters que vamos a usar después para el grafo / pathfinding
     public bool TryGetStart(out Vector3Int start)
     {
         if (startCell.HasValue)
@@ -273,17 +256,16 @@ public class LaberintoExecuter : MonoBehaviour
             return;
         }
 
-        if (playerMover == null)
+        if (playerMove == null)
             return;
 
-        // Convertimos celdas a posiciones de mundo
         List<Vector3> puntos = new List<Vector3>();
         foreach (var cell in LastRoute)
         {
             puntos.Add(tilemap.GetCellCenterWorld(cell));
         }
 
-        playerMover.PlayPath(puntos);
+        playerMove.PlayPath(puntos);
     }
 
     public Dictionary<Vector3Int, TileType> GetAllCells()

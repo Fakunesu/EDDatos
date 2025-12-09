@@ -5,12 +5,8 @@ using static LaberintoExecuter;
 
 public static class PathfinderDijkstra
 {
-    public static List<Vector3Int> CalcularCamino(
-        Dictionary<Vector3Int, TileType> cellTypes,
-        Vector3Int startCell,
-        Vector3Int endCell)
+    public static List<Vector3Int> CalcularCamino(Dictionary<Vector3Int, TileType> cellTypes, Vector3Int startCell, Vector3Int endCell)
     {
-        // Construimos el grafo a partir de las celdas
         MyALGraph<Vector2Int> grafo = ConstruirGrafo(cellTypes);
 
         Vector2Int inicio = new Vector2Int(startCell.x, startCell.y);
@@ -20,7 +16,6 @@ public static class PathfinderDijkstra
         if (camino2D == null || camino2D.Count == 0)
             return null;
 
-        // Convertimos a Vector3Int (celdas del Tilemap)
         List<Vector3Int> caminoCells = new List<Vector3Int>();
         foreach (var p in camino2D)
         {
@@ -30,12 +25,10 @@ public static class PathfinderDijkstra
         return caminoCells;
     }
 
-    private static MyALGraph<Vector2Int> ConstruirGrafo(
-        Dictionary<Vector3Int, TileType> cellTypes)
+    private static MyALGraph<Vector2Int> ConstruirGrafo(Dictionary<Vector3Int, TileType> cellTypes)
     {
         MyALGraph<Vector2Int> grafo = new MyALGraph<Vector2Int>();
 
-        // 1) Crear vértices (todas las celdas que no son Wall)
         foreach (var kvp in cellTypes)
         {
             if (kvp.Value == TileType.Wall)
@@ -46,7 +39,6 @@ public static class PathfinderDijkstra
             grafo.AddVertex(nodo);
         }
 
-        // 2) Crear aristas entre vecinos (4 direcciones)
         Vector3Int[] dirs = new Vector3Int[]
         {
             new Vector3Int(1, 0, 0),
@@ -67,12 +59,11 @@ public static class PathfinderDijkstra
             {
                 Vector3Int vecinoCell = cell + dir;
 
-                if (cellTypes.TryGetValue(vecinoCell, out TileType tipoVecino) &&
-                    tipoVecino != TileType.Wall)
+                if (cellTypes.TryGetValue(vecinoCell, out TileType tipoVecino) && tipoVecino != TileType.Wall)
                 {
                     Vector2Int to = new Vector2Int(vecinoCell.x, vecinoCell.y);
                     grafo.AddVertex(to);
-                    grafo.AddEdge(from, (to, 1f)); // todas las aristas pesan 1
+                    grafo.AddEdge(from, (to, 1f));
                 }
             }
         }
@@ -80,10 +71,7 @@ public static class PathfinderDijkstra
         return grafo;
     }
 
-    private static List<Vector2Int> Dijkstra(
-        MyALGraph<Vector2Int> grafo,
-        Vector2Int inicio,
-        Vector2Int fin)
+    private static List<Vector2Int> Dijkstra( MyALGraph<Vector2Int> grafo, Vector2Int inicio, Vector2Int fin)
     {
         var dist = new Dictionary<Vector2Int, float>();
         var prev = new Dictionary<Vector2Int, Vector2Int?>();
@@ -103,7 +91,6 @@ public static class PathfinderDijkstra
 
         while (noVisitados.Count > 0)
         {
-            // Sacamos el de menor distancia
             Vector2Int u = noVisitados[0];
             float mejor = dist[u];
 
@@ -124,7 +111,7 @@ public static class PathfinderDijkstra
                 break;
 
             if (float.IsPositiveInfinity(dist[u]))
-                break; // lo que queda es inalcanzable
+                break; 
 
             foreach (var edge in grafo.GetAdjacents(u))
             {
@@ -141,9 +128,9 @@ public static class PathfinderDijkstra
         }
 
         if (float.IsPositiveInfinity(dist[fin]))
-            return null; // no hay camino
+            return null; 
 
-        // Reconstruir camino
+  
         List<Vector2Int> camino = new List<Vector2Int>();
         Vector2Int actual = fin;
 

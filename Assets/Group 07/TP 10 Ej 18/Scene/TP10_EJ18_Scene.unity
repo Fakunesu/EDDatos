@@ -358,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 114274196}
   outputText: {fileID: 1368715674}
-  playerMover: {fileID: 1056818869}
+  playerMove: {fileID: 0}
   floorTile: {fileID: 11400000, guid: 781f95e9a1831d24783985e00a0ca3f9, type: 2}
   wallTile: {fileID: 11400000, guid: 0eb36a9f7dc35534ba4e1e771f60c73e, type: 2}
   startTile: {fileID: 11400000, guid: 6eb4cdc013798164a93d4fe3eb326853, type: 2}
@@ -1587,7 +1587,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  rotationSpeed: 10
 --- !u!212 &1056818870
 SpriteRenderer:
   m_ObjectHideFlags: 0

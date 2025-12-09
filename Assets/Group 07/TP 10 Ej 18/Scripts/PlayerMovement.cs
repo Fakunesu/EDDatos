@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 3f;
     private Coroutine currentRoutine;
-    public float rotationSpeed = 10f;
 
     public void PlayPath(List<Vector3> path)
     {
@@ -36,11 +35,7 @@ public class PlayerMovement : MonoBehaviour
                     transform.up = dir;
                 }
 
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    target,
-                    speed * Time.deltaTime
-                );
+                transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
                 yield return null;
             }
         }
